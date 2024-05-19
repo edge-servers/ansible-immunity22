@@ -29,7 +29,7 @@
   in favour of supplying the full version in the variables having
   `_version` suffix, for more information please see [[change!] Simplify installation of custom modules #193](https://github.com/immunity/ansible-immunity22/commit/3c651a0179ecd7881cd6f388ee4a7d0a8c5a7689)
 - `immunity22_firmware_upgrader_max_file_size` now sets
-  `OPENWISP_FIRMWARE_UPGRADER_MAX_FILE_SIZE` in `settings.py` and
+  `IMMUNITY_FIRMWARE_UPGRADER_MAX_FILE_SIZE` in `settings.py` and
   updates `client_max_body_size` in nginx config.
 - Added variable to configure daphne websocket timeout;
   this timeout value is also used for configuring the "group_expiry"

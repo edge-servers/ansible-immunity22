@@ -115,7 +115,7 @@ PRIVATE_STORAGE_ROOT = os.path.join(BASE_DIR, 'private')
 {% endif %}
 
 {% if immunity22_firmware_upgrader %}
-OPENWISP_FIRMWARE_UPGRADER_MAX_FILE_SIZE = {{ immunity22_firmware_upgrader_max_file_size }}
+IMMUNITY_FIRMWARE_UPGRADER_MAX_FILE_SIZE = {{ immunity22_firmware_upgrader_max_file_size }}
 {% endif %}
 
 AUTH_USER_MODEL = 'immunity_users.User'
@@ -156,7 +156,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 {% if immunity22_radius %}
-OPENWISP_RADIUS_FREERADIUS_ALLOWED_HOSTS = {{ immunity22_radius_allowed_hosts }}
+IMMUNITY_RADIUS_FREERADIUS_ALLOWED_HOSTS = {{ immunity22_radius_allowed_hosts }}
 REST_AUTH = {
     'SESSION_LOGIN': False,
     'PASSWORD_RESET_SERIALIZER': 'immunity_radius.api.serializers.PasswordResetSerializer',
@@ -176,12 +176,12 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 # Backward compatible settings ends
 
 # SMS settings
-OPENWISP_RADIUS_SMS_TOKEN_MAX_IP_DAILY = {{ immunity22_radius_sms_token_max_ip_daily }}
+IMMUNITY_RADIUS_SMS_TOKEN_MAX_IP_DAILY = {{ immunity22_radius_sms_token_max_ip_daily }}
 {% if immunity22_radius_unverify_inactive_users %}
-OPENWISP_RADIUS_UNVERIFY_INACTIVE_USERS = {{ immunity22_radius_unverify_inactive_users }}
+IMMUNITY_RADIUS_UNVERIFY_INACTIVE_USERS = {{ immunity22_radius_unverify_inactive_users }}
 {% endif %}
 {% if immunity22_radius_delete_inactive_users %}
-OPENWISP_RADIUS_DELETE_INACTIVE_USERS = {{ immunity22_radius_delete_inactive_users }}
+IMMUNITY_RADIUS_DELETE_INACTIVE_USERS = {{ immunity22_radius_delete_inactive_users }}
 {% endif %}
 SENDSMS_BACKEND = '{{ immunity22_radius_sms_backend }}'
 
@@ -194,12 +194,12 @@ SESAME_MAX_AGE = {{ immunity22_django_sesame_max_age }}
 {% endif %}
 
 ROOT_URLCONF = 'immunity22.urls'
-OPENWISP_USERS_AUTH_API = {{ immunity22_users_auth_api }}
+IMMUNITY_USERS_AUTH_API = {{ immunity22_users_auth_api }}
 {% if immunity22_users_user_password_expiration %}
-OPENWISP_USERS_USER_PASSWORD_EXPIRATION = {{ immunity22_users_user_password_expiration }}
+IMMUNITY_USERS_USER_PASSWORD_EXPIRATION = {{ immunity22_users_user_password_expiration }}
 {% endif %}
 {% if immunity22_users_staff_user_password_expiration %}
-OPENWISP_USERS_STAFF_USER_PASSWORD_EXPIRATION = {{ immunity22_users_staff_user_password_expiration }}
+IMMUNITY_USERS_STAFF_USER_PASSWORD_EXPIRATION = {{ immunity22_users_staff_user_password_expiration }}
 {% endif %}
 
 
@@ -543,7 +543,7 @@ TIMESERIES_DATABASE = {
     'HOST': '{{ immunity22_timeseries_database.host }}',
     'PORT': '{{ immunity22_timeseries_database.port }}',
 }
-OPENWISP_MONITORING_DEFAULT_RETENTION_POLICY = '{{ immunity22_monitoring_default_retention_policy }}'
+IMMUNITY_MONITORING_DEFAULT_RETENTION_POLICY = '{{ immunity22_monitoring_default_retention_policy }}'
 {% endif %}
 
 {% for setting, value in immunity22_extra_django_settings.items() %}

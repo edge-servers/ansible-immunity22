@@ -46,17 +46,17 @@
       command: systemctl status redis
       changed_when: false
 
-    - name: Check Openwisp
+    - name: Check Immunity
       block:
         - name: Check if Immunity is running
           uri:
             url: "https://{{ inventory_hostname }}/admin/login/?next=/admin/"
             validate_certs: false
       rescue:
-        - name: Get OpenWisp log
+        - name: Get Immunity log
           command: "tail -n 500 {{ immunity22_path }}/log/*.log"
           register: immunity_log
 
-        - name: Show OpenWisp log
+        - name: Show Immunity log
           debug:
             var: immunity_log

@@ -508,7 +508,7 @@ E.g:
     immunity22_firmware_upgrader: true
     immunity22_extra_django_settings_instructions:
       - |
-        OPENWISP_CUSTOM_OPENWRT_IMAGES = (
+        IMMUNITY_CUSTOM_OPENWRT_IMAGES = (
             ('my-custom-image-squashfs-sysupgrade.bin', {
                 'label': 'My Custom Image',
                 'boards': ('MyCustomImage',)
@@ -643,7 +643,7 @@ in `immunity22_path`.
 This is helpful for [customizing Immunity's theme](https://github.com/immunity/immunity-utils#immunity_admin_theme_links).
 
 E.g., if you added a custom CSS file in `files/ow2_static/css/custom.css`, the
-file location to use in [OPENWISP_ADMIN_THEME_LINKS](https://github.com/immunity/immunity-utils#immunity_admin_theme_links) setting will be `css/custom.css`.
+file location to use in [IMMUNITY_ADMIN_THEME_LINKS](https://github.com/immunity/immunity-utils#immunity_admin_theme_links) setting will be `css/custom.css`.
 
 Deploying the upcoming release of Immunity
 ==========================================
@@ -1205,10 +1205,10 @@ Below are listed all the variables you can customize (you may also want to take 
     # to add multi-language support
     immunity22_internationalization: true
     immunity22_users_auth_api: true
-    # Allows setting OPENWISP_USERS_USER_PASSWORD_EXPIRATION setting.
+    # Allows setting IMMUNITY_USERS_USER_PASSWORD_EXPIRATION setting.
     # Read https://github.com/immunity/immunity-users#immunity_users_user_password_expiration
     immunity22_users_user_password_expiration: 30
-      # Allows setting OPENWISP_USERS_STAFF_USER_PASSWORD_EXPIRATION setting.
+      # Allows setting IMMUNITY_USERS_STAFF_USER_PASSWORD_EXPIRATION setting.
     # Read https://github.com/immunity/immunity-users#immunity_users_staff_user_password_expiration
     immunity22_users_staff_user_password_expiration: 30
     # used for SMS verification, the default is a dummy SMS backend
