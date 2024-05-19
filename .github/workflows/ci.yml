@@ -50,7 +50,7 @@ jobs:
       - name: Tests
         run: |
           mkdir -p ~/.ansible/roles
-          ln -s $GITHUB_WORKSPACE ~/.ansible/roles/immunity.immunity22
+          ln -s $GITHUB_WORKSPACE ~/.ansible/roles/edge_servers.immunity22
           molecule test
         env:
           ROLE_NAME: immunity22
