@@ -1,6 +1,6 @@
 ---
 - name: Add freeradius repository into Ubuntu jammy sources list
-  # NOTE: The older version of edge_servers.immunity22 used to install
+  # NOTE: The older version of edge-servers.immunity22 used to install
   # FreeRADIUS 3.0.x on Ubuntu 22.04. After the release of
   # Ubuntu 22.04.1, FreeRADIUS 3.0.x can no longer be installed.
   # This block contains tasks that configures FreeRADIUS server

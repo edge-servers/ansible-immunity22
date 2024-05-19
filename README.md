@@ -4,7 +4,7 @@ ansible-immunity22
 [![Installing Immunity2](https://raw.githubusercontent.com/immunity/ansible-immunity22/master/docs/install-immunity22.png)](https://www.youtube.com/watch?v=v_DUeFUGG8Q&index=1&list=PLPueLZei9c8_DEYgC5StOcR5bCAcQVfR8)
 
 [![Build Status](https://github.com/edge-servers/ansible-immunity22/workflows/Ansible%20Immunity2%20CI%20Build/badge.svg?branch=master)](https://github.com/edge-servers/ansible-immunity22/actions?query=workflow%3A%22Ansible+Immunity2+CI+Build%22)
-[![Galaxy](http://img.shields.io/badge/galaxy-edge_servers.immunity22-blue.svg?style=flat-square)](https://galaxy.ansible.com/ui/standalone/roles/immunity/immunity22/)
+[![Galaxy](http://img.shields.io/badge/galaxy-edge-servers.immunity22-blue.svg?style=flat-square)](https://galaxy.ansible.com/ui/standalone/roles/immunity/immunity22/)
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/immunity/general)
 
 Ansible role that installs the Immunity Server Application.
@@ -122,7 +122,7 @@ Install this role
 For the sake of simplicity, the easiest thing is to install this role **on your local machine**
 via `ansible-galaxy` (which was installed when installing ansible), therefore run:
 
-    ansible-galaxy install edge_servers.immunity22
+    ansible-galaxy install edge-servers.immunity22
 
 Ensure that you have the [`community.general`](https://github.com/ansible-collections/community.general)
 and `ansible.posix` collections installed and up to date:
@@ -169,7 +169,7 @@ Create a new playbook file `playbook.yml` **on your local machine** with the fol
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - edge_servers.immunity22
+    - edge-servers.immunity22
   vars:
     immunity22_default_from_email: "immunity22@immunity22.mydomain.com"
 ```
@@ -239,7 +239,7 @@ First of all, create the directory where you want to place the repositories of t
 Clone `ansible-immunity22` and `Stouts.postfix` as follows:
 
 ```bash
-    git clone https://github.com/edge-servers/ansible-immunity22.git edge_servers.immunity22
+    git clone https://github.com/edge-servers/ansible-immunity22.git edge-servers.immunity22
     git clone https://github.com/Stouts/Stouts.postfix
     git clone https://github.com/edge-servers/ansible-ow-influxdb immunity.influxdb
 ```
@@ -275,8 +275,8 @@ To do that, proceed with the following steps:
 
 Clone repository by:
 
-    git clone https://github.com/<your_fork>/ansible-immunity22.git edge_servers.immunity22
-    cd edge_servers.immunity22
+    git clone https://github.com/<your_fork>/ansible-immunity22.git edge-servers.immunity22
+    cd edge-servers.immunity22
 
 **Step 2**: Install docker
 
@@ -398,7 +398,7 @@ create an empty file named `playbook.yml` which contains the following:
 ```yaml
 - hosts: immunity22
   roles:
-    - edge_servers.immunity22
+    - edge-servers.immunity22
   # the following line is needed only when an IP address is used as the inventory hostname
   vars:
       postfix_myhostname: localhost
@@ -444,7 +444,7 @@ your `playbook.yml` file. Here's a short summary of how to do this:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - edge_servers.immunity22
+    - edge-servers.immunity22
   vars:
     immunity22_network_topology: true
 ```
@@ -480,7 +480,7 @@ your `playbook.yml` file. Here's a short summary of how to do this:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - edge_servers.immunity22
+    - edge-servers.immunity22
   vars:
     immunity22_firmware_upgrader: true
 ```
@@ -503,7 +503,7 @@ E.g:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - edge_servers.immunity22
+    - edge-servers.immunity22
   vars:
     immunity22_firmware_upgrader: true
     immunity22_extra_django_settings_instructions:
@@ -535,7 +535,7 @@ your `playbook.yml` file. Here's a short summary of how to do this:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - edge_servers.immunity22
+    - edge-servers.immunity22
   vars:
     immunity22_radius: true
     immunity22_freeradius_install: true
@@ -583,7 +583,7 @@ package. Here's a short summary of how to do this:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - edge_servers.immunity22
+    - edge-servers.immunity22
   vars:
     # Cross-Origin Resource Sharing (CORS) settings
     immunity22_django_cors:
@@ -617,7 +617,7 @@ setting of `django-cors-headers` as shown in the following example:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - edge_servers.immunity22
+    - edge-servers.immunity22
   vars:
     immunity22_django_cors:
       enabled: true
@@ -683,7 +683,7 @@ Ensure your `requirements.yml` contains following content:
 roles:
   - src: https://github.com/edge-servers/ansible-immunity22.git
     version: master
-    name: edge_servers.immunity22-dev
+    name: edge-servers.immunity22-dev
 collections:
   - name: community.general
     version: ">=3.6.0"
@@ -712,7 +712,7 @@ for installing a fully-featured version of Immunity.
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - edge_servers.immunity22-dev
+    - edge-servers.immunity22-dev
   vars:
     immunity22_network_topology: true
     immunity22_firmware_upgrader: true
@@ -819,7 +819,7 @@ Then proceed to edit your `playbook.yml` so that it will look similar to the fol
   become: "{{ become | default('yes') }}"
   roles:
     - geerlingguy.certbot
-    - edge_servers.immunity22
+    - edge-servers.immunity22
   vars:
     # SSL certificates
     immunity22_ssl_cert: "/etc/letsencrypt/live/{{ inventory_hostname }}/fullchain.pem"
@@ -858,7 +858,7 @@ before upgrading**.
 
 Update this ansible-role via `ansible-galaxy`:
 
-    ansible-galaxy install --force edge_servers.immunity22
+    ansible-galaxy install --force edge-servers.immunity22
 
 Run `ansible-playbook` again **from your local machine**:
 
@@ -880,7 +880,7 @@ Below are listed all the variables you can customize (you may also want to take 
 - hosts: yourhost
   roles:
   # you can add other roles here
-    - edge_servers.immunity22
+    - edge-servers.immunity22
   vars:
     # Enable the modules you want to use
     immunity22_network_topology: false

@@ -26,4 +26,4 @@
         state: absent
 
   roles:
-    - role: edge_servers.immunity22
+    - role: edge-servers.immunity22
