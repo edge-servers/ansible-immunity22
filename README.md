@@ -3,7 +3,7 @@ ansible-immunity22
 
 [![Installing Immunity2](https://raw.githubusercontent.com/immunity/ansible-immunity22/master/docs/install-immunity22.png)](https://www.youtube.com/watch?v=v_DUeFUGG8Q&index=1&list=PLPueLZei9c8_DEYgC5StOcR5bCAcQVfR8)
 
-[![Build Status](https://github.com/immunity/ansible-immunity22/workflows/Ansible%20Immunity2%20CI%20Build/badge.svg?branch=master)](https://github.com/immunity/ansible-immunity22/actions?query=workflow%3A%22Ansible+Immunity2+CI+Build%22)
+[![Build Status](https://github.com/edge-servers/ansible-immunity22/workflows/Ansible%20Immunity2%20CI%20Build/badge.svg?branch=master)](https://github.com/edge-servers/ansible-immunity22/actions?query=workflow%3A%22Ansible+Immunity2+CI+Build%22)
 [![Galaxy](http://img.shields.io/badge/galaxy-immunity.immunity22-blue.svg?style=flat-square)](https://galaxy.ansible.com/ui/standalone/roles/immunity/immunity22/)
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/immunity/general)
 
@@ -217,7 +217,7 @@ Now proceed with the following steps:
 2. update the `name` field of the default `Site` object to accurately display site name in email notifications
 3. edit the information of the default organization
 4. in the default organization you just updated, note down the automatically generated *shared secret*
-   option, you will need it to use the [auto-registration feature of immunity-config](https://github.com/immunity/immunity-config#automatic-registration)
+   option, you will need it to use the [auto-registration feature of immunity-config](https://github.com/edge-servers/immunity-config#automatic-registration)
 5. this Ansible role creates a default template to update ``authorized_keys`` on networking devices
    using the default access credentials. The role will either use an existing SSH key pair or create
    a new one if no SSH key pair exists on the host machine.
@@ -239,9 +239,9 @@ First of all, create the directory where you want to place the repositories of t
 Clone `ansible-immunity22` and `Stouts.postfix` as follows:
 
 ```bash
-    git clone https://github.com/immunity/ansible-immunity22.git immunity.immunity22
+    git clone https://github.com/edge-servers/ansible-immunity22.git immunity.immunity22
     git clone https://github.com/Stouts/Stouts.postfix
-    git clone https://github.com/immunity/ansible-ow-influxdb immunity.influxdb
+    git clone https://github.com/edge-servers/ansible-ow-influxdb immunity.influxdb
 ```
 
 Now, go to the parent directory & create hosts file and playbook.yml:
@@ -314,7 +314,7 @@ way is to use a VirtualBox Virtual Machine (from here on VM).
 purposes** leveraging [Vagrant](https://www.vagrantup.com), a popular open source
 tool for building and maintaining portable virtual software development environments.
 
-To use this new way, clone the repository [vagrant-immunity22](https://github.com/immunity/vagrant-immunity22),
+To use this new way, clone the repository [vagrant-immunity22](https://github.com/edge-servers/vagrant-immunity22),
 it contains the instructions (in the `README.md`) and the vagrant configuration
 to perform the automatic installation.
 
@@ -493,7 +493,7 @@ When the playbook is done running, if you got no errors you can login at:
     username: admin
     password: admin
 
-**Note**: You can configure [immunity-firmware-upgrader specific settings](https://github.com/immunity/immunity-firmware-upgrader#settings)
+**Note**: You can configure [immunity-firmware-upgrader specific settings](https://github.com/edge-servers/immunity-firmware-upgrader#settings)
 using the `immunity22_extra_django_settings` or
 `immunity22_extra_django_settings_instructions`.
 
@@ -640,10 +640,10 @@ the static content in `files/ow2_static` directory. The files inside
 `files/ow2_static` will be uploaded to a directory named `static_custom`
 in `immunity22_path`.
 
-This is helpful for [customizing Immunity's theme](https://github.com/immunity/immunity-utils#immunity_admin_theme_links).
+This is helpful for [customizing Immunity's theme](https://github.com/edge-servers/immunity-utils#immunity_admin_theme_links).
 
 E.g., if you added a custom CSS file in `files/ow2_static/css/custom.css`, the
-file location to use in [IMMUNITY_ADMIN_THEME_LINKS](https://github.com/immunity/immunity-utils#immunity_admin_theme_links) setting will be `css/custom.css`.
+file location to use in [IMMUNITY_ADMIN_THEME_LINKS](https://github.com/edge-servers/immunity-utils#immunity_admin_theme_links) setting will be `css/custom.css`.
 
 Deploying the upcoming release of Immunity
 ==========================================
@@ -681,7 +681,7 @@ Ensure your `requirements.yml` contains following content:
 ```yml
 ---
 roles:
-  - src: https://github.com/immunity/ansible-immunity22.git
+  - src: https://github.com/edge-servers/ansible-immunity22.git
     version: master
     name: immunity.immunity22-dev
 collections:
@@ -785,7 +785,7 @@ variables accordingly or by following the instructions explained in the section
 ["Automatic SSL certificate"](#automatic-ssl-certificate).
 
 If you keep the untrusted certificate, you will also need to disable SSL verification on devices
-using [immunity-config](https://github.com/immunity/immunity-config) by setting `verify_ssl` to `0`,
+using [immunity-config](https://github.com/edge-servers/immunity-config) by setting `verify_ssl` to `0`,
 although I advice against using this kind of setup in a production environment.
 
 Automatic SSL certificate
@@ -874,7 +874,7 @@ This role has many variables values that can be changed to best suit
 your needs.
 
 Below are listed all the variables you can customize (you may also want to take a look at
-[the default values of these variables](https://github.com/immunity/ansible-immunity22/blob/master/defaults/main.yml)).
+[the default values of these variables](https://github.com/edge-servers/ansible-immunity22/blob/master/defaults/main.yml)).
 
 ```yaml
 - hosts: yourhost
@@ -900,7 +900,7 @@ Below are listed all the variables you can customize (you may also want to take 
     immunity22_django_version: "django~=3.2.13"
     # Setting this to true will enable subnet division feature of
     # immunity-controller. Refer immunity-controller documentation
-    # for more information. https://github.com/immunity/immunity-controller#subnet-division-app
+    # for more information. https://github.com/edge-servers/immunity-controller#subnet-division-app
     # By default, it is set to false.
     immunity22_controller_subnet_division: true
     # when immunity22_radius_urls is set to false, the radius module
@@ -994,7 +994,7 @@ Below are listed all the variables you can customize (you may also want to take 
     # but can be disabled in multi-VM installations if needed
     immunity22_controller_urls: true
     # The default retention policy that applies to the timeseries data
-    # https://github.com/immunity/immunity-monitoring#immunity-monitoring-default-retention-policy
+    # https://github.com/edge-servers/immunity-monitoring#immunity-monitoring-default-retention-policy
     immunity22_monitoring_default_retention_policy: "26280h0m0s" # 3 years
     # whether NGINX should be installed
     immunity22_nginx_install: true
@@ -1206,10 +1206,10 @@ Below are listed all the variables you can customize (you may also want to take 
     immunity22_internationalization: true
     immunity22_users_auth_api: true
     # Allows setting IMMUNITY_USERS_USER_PASSWORD_EXPIRATION setting.
-    # Read https://github.com/immunity/immunity-users#immunity_users_user_password_expiration
+    # Read https://github.com/edge-servers/immunity-users#immunity_users_user_password_expiration
     immunity22_users_user_password_expiration: 30
       # Allows setting IMMUNITY_USERS_STAFF_USER_PASSWORD_EXPIRATION setting.
-    # Read https://github.com/immunity/immunity-users#immunity_users_staff_user_password_expiration
+    # Read https://github.com/edge-servers/immunity-users#immunity_users_staff_user_password_expiration
     immunity22_users_staff_user_password_expiration: 30
     # used for SMS verification, the default is a dummy SMS backend
     # which prints to standard output and hence does nothing

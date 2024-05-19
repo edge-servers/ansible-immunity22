@@ -20,14 +20,14 @@
 
 ### Changes
 
-- Upgraded to Immunity Users 1.0.x (see [change log](https://github.com/immunity/immunity-users/releases/tag/1.0.0))
-- Upgraded to Immunity Controller 1.0.x (see [change log](https://github.com/immunity/immunity-controller/releases/tag/1.0.0))
-- Upgraded to Immunity Network Topology 1.0.x (see [change log](https://github.com/immunity/immunity-network-topology/releases/tag/1.0.0))
-- Upgraded to Immunity Firmware Upgrader 1.0.x (see [change log](https://github.com/immunity/immunity-firmware-upgrader/releases/tag/1.0.0))
+- Upgraded to Immunity Users 1.0.x (see [change log](https://github.com/edge-servers/immunity-users/releases/tag/1.0.0))
+- Upgraded to Immunity Controller 1.0.x (see [change log](https://github.com/edge-servers/immunity-controller/releases/tag/1.0.0))
+- Upgraded to Immunity Network Topology 1.0.x (see [change log](https://github.com/edge-servers/immunity-network-topology/releases/tag/1.0.0))
+- Upgraded to Immunity Firmware Upgrader 1.0.x (see [change log](https://github.com/edge-servers/immunity-firmware-upgrader/releases/tag/1.0.0))
 - **Backward incompatible change**: simplified installation of
   custom modules, the variables with `_pip` suffix have been abandoned
   in favour of supplying the full version in the variables having
-  `_version` suffix, for more information please see [[change!] Simplify installation of custom modules #193](https://github.com/immunity/ansible-immunity22/commit/3c651a0179ecd7881cd6f388ee4a7d0a8c5a7689)
+  `_version` suffix, for more information please see [[change!] Simplify installation of custom modules #193](https://github.com/edge-servers/ansible-immunity22/commit/3c651a0179ecd7881cd6f388ee4a7d0a8c5a7689)
 - `immunity22_firmware_upgrader_max_file_size` now sets
   `IMMUNITY_FIRMWARE_UPGRADER_MAX_FILE_SIZE` in `settings.py` and
   updates `client_max_body_size` in nginx config.
@@ -49,9 +49,9 @@
 - Added optional support for [Immunity RADIUS](https://immunity.io/docs/user/radius.html)
 - Added support for Ubuntu 22.04
 - Added support for internationalization
-- Added option to [deploy custom static files](https://github.com/immunity/ansible-immunity22#deploying-custom-static-content)
+- Added option to [deploy custom static files](https://github.com/edge-servers/ansible-immunity22#deploying-custom-static-content)
 - Added support for [subnet division rule feature](https://immunity.io/docs/user/subnet-division-rules.html)
-- Added the [Immunity Users authentication backend](https://github.com/immunity/immunity-users#authentication-backend) (enabled by default)
+- Added the [Immunity Users authentication backend](https://github.com/edge-servers/immunity-users#authentication-backend) (enabled by default)
 - Added sesame default configuration
 - Allow specifying Django version
 - Added uWSGI listen option
