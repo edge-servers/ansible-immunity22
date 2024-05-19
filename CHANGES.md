@@ -20,10 +20,10 @@
 
 ### Changes
 
-- Upgraded to OpenWISP Users 1.0.x (see [change log](https://github.com/immunity/immunity-users/releases/tag/1.0.0))
-- Upgraded to OpenWISP Controller 1.0.x (see [change log](https://github.com/immunity/immunity-controller/releases/tag/1.0.0))
-- Upgraded to OpenWISP Network Topology 1.0.x (see [change log](https://github.com/immunity/immunity-network-topology/releases/tag/1.0.0))
-- Upgraded to OpenWISP Firmware Upgrader 1.0.x (see [change log](https://github.com/immunity/immunity-firmware-upgrader/releases/tag/1.0.0))
+- Upgraded to Immunity Users 1.0.x (see [change log](https://github.com/immunity/immunity-users/releases/tag/1.0.0))
+- Upgraded to Immunity Controller 1.0.x (see [change log](https://github.com/immunity/immunity-controller/releases/tag/1.0.0))
+- Upgraded to Immunity Network Topology 1.0.x (see [change log](https://github.com/immunity/immunity-network-topology/releases/tag/1.0.0))
+- Upgraded to Immunity Firmware Upgrader 1.0.x (see [change log](https://github.com/immunity/immunity-firmware-upgrader/releases/tag/1.0.0))
 - **Backward incompatible change**: simplified installation of
   custom modules, the variables with `_pip` suffix have been abandoned
   in favour of supplying the full version in the variables having
@@ -45,13 +45,13 @@
 
 ### Features
 
-- Added support for [OpenWISP Monitoring](https://immunity.io/docs/user/monitoring.html)
-- Added optional support for [OpenWISP RADIUS](https://immunity.io/docs/user/radius.html)
+- Added support for [Immunity Monitoring](https://immunity.io/docs/user/monitoring.html)
+- Added optional support for [Immunity RADIUS](https://immunity.io/docs/user/radius.html)
 - Added support for Ubuntu 22.04
 - Added support for internationalization
 - Added option to [deploy custom static files](https://github.com/immunity/ansible-immunity22#deploying-custom-static-content)
 - Added support for [subnet division rule feature](https://immunity.io/docs/user/subnet-division-rules.html)
-- Added the [OpenWISP Users authentication backend](https://github.com/immunity/immunity-users#authentication-backend) (enabled by default)
+- Added the [Immunity Users authentication backend](https://github.com/immunity/immunity-users#authentication-backend) (enabled by default)
 - Added sesame default configuration
 - Allow specifying Django version
 - Added uWSGI listen option

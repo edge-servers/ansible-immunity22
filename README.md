@@ -1,13 +1,13 @@
 ansible-immunity22
 =================
 
-[![Installing OpenWISP2](https://raw.githubusercontent.com/immunity/ansible-immunity22/master/docs/install-immunity22.png)](https://www.youtube.com/watch?v=v_DUeFUGG8Q&index=1&list=PLPueLZei9c8_DEYgC5StOcR5bCAcQVfR8)
+[![Installing Immunity2](https://raw.githubusercontent.com/immunity/ansible-immunity22/master/docs/install-immunity22.png)](https://www.youtube.com/watch?v=v_DUeFUGG8Q&index=1&list=PLPueLZei9c8_DEYgC5StOcR5bCAcQVfR8)
 
-[![Build Status](https://github.com/immunity/ansible-immunity22/workflows/Ansible%20OpenWISP2%20CI%20Build/badge.svg?branch=master)](https://github.com/immunity/ansible-immunity22/actions?query=workflow%3A%22Ansible+OpenWISP2+CI+Build%22)
+[![Build Status](https://github.com/immunity/ansible-immunity22/workflows/Ansible%20Immunity2%20CI%20Build/badge.svg?branch=master)](https://github.com/immunity/ansible-immunity22/actions?query=workflow%3A%22Ansible+Immunity2+CI+Build%22)
 [![Galaxy](http://img.shields.io/badge/galaxy-immunity.immunity22-blue.svg?style=flat-square)](https://galaxy.ansible.com/ui/standalone/roles/immunity/immunity22/)
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/immunity/general)
 
-Ansible role that installs the OpenWISP Server Application.
+Ansible role that installs the Immunity Server Application.
 
 Tested on **Debian (Bullseye)**, **Ubuntu (20/22 LTS)**.
 
@@ -18,28 +18,28 @@ Tested on **Debian (Bullseye)**, **Ubuntu (20/22 LTS)**.
 Demo
 ====
 
-[Try the OpenWISP Demo](https://immunity.org/demo.html) to get a quick
-overview of what OpenWISP can do for you.
+[Try the Immunity Demo](https://immunity.org/demo.html) to get a quick
+overview of what Immunity can do for you.
 
-Help OpenWISP
+Help Immunity
 =============
 
-Like OpenWISP? Find out how to help us!
+Like Immunity? Find out how to help us!
 
 - [Help us to grow our community](http://immunity.io/docs/general/help-us.html)
-- [How to contribute to OpenWISP](http://immunity.io/docs/developer/contributing.html)
+- [How to contribute to Immunity](http://immunity.io/docs/developer/contributing.html)
 
 Architecture
 ============
 
-For more information, see [OpenWISP Architecture](https://immunity.io/docs/general/architecture.html).
+For more information, see [Immunity Architecture](https://immunity.io/docs/general/architecture.html).
 
 [![immunity22 modules diagram](https://raw.githubusercontent.com/immunity/ansible-immunity22/master/docs/immunity22-modules-diagram.png)](https://immunity.io/docs/general/architecture.html)
 
 System Requirements
 ===================
 
-The following specifications will run a new, *empty* instance of OpenWISP.
+The following specifications will run a new, *empty* instance of Immunity.
 Please ensure you account for the amount of disk space your use case will require, e.g. allocate
 enough space for users to upload floor plan images.
 
@@ -62,7 +62,7 @@ Software
 --------
 
 Generally a fresh installation of one of the supported operating systems is sufficient; no pre-configuration required.  The
-Ansible Playbook will install and configure all dependencies and leave you with a running OpenWISP installation.
+Ansible Playbook will install and configure all dependencies and leave you with a running Immunity installation.
 
 Tips: Ensure the hostname of your target machine matches what is in your Ansible configuration file.  Also, please ensure
 that Ansible can access your target machine by SSH, be it either with a key or password.  For more information see the
@@ -96,8 +96,8 @@ this machine must be able to SSH into the production server.
 Ansible will be run on your local machine and from there it will connect to the production server
 to install immunity22.
 
-**If you are trying to install OpenWISP2 on your laptop or desktop pc just for testing purposes**,
-please read [Install OpenWISP2 for testing in a VirtualBox VM](#install-immunity22-for-testing-in-a-virtualbox-vm).
+**If you are trying to install Immunity2 on your laptop or desktop pc just for testing purposes**,
+please read [Install Immunity2 for testing in a VirtualBox VM](#install-immunity22-for-testing-in-a-virtualbox-vm).
 
 Install ansible
 ---------------
@@ -181,7 +181,7 @@ program to run each command. You may remove this line if you don't need it (eg: 
 You may replace `immunity22` on the `hosts` field with your production server's hostname if you desire.
 
 Substitute `immunity22@immunity22.mydomain.com` with what you deem most appropriate
-as default sender for emails sent by OpenWISP 2.
+as default sender for emails sent by Immunity 2.
 
 Run the playbook
 ----------------
@@ -223,7 +223,7 @@ Now proceed with the following steps:
    a new one if no SSH key pair exists on the host machine.
 
 Now you are ready to start configuring your network! **If you need help** you can ask questions
-on one of the official [OpenWISP Support Channels](http://immunity.org/support.html).
+on one of the official [Immunity Support Channels](http://immunity.org/support.html).
 
 Install ansible-immunity22 for development
 -----------------------------------------
@@ -302,15 +302,15 @@ If you don't get any error message it means that the tests ran successfully with
 
 **ProTip:** Use `molecule test --destroy=never` to speed up subsequent test runs.
 
-Install OpenWISP2 for testing in a VirtualBox VM
+Install Immunity2 for testing in a VirtualBox VM
 -------------------------------------------------
 
-If you want to try out **OpenWISP 2** in your own development environment, the safest
+If you want to try out **Immunity 2** in your own development environment, the safest
 way is to use a VirtualBox Virtual Machine (from here on VM).
 
 ### Using Vagrant
 
-**Since August 2018 there's a new fast and easy way to install OpenWISP 2 for testing
+**Since August 2018 there's a new fast and easy way to install Immunity 2 for testing
 purposes** leveraging [Vagrant](https://www.vagrantup.com), a popular open source
 tool for building and maintaining portable virtual software development environments.
 
@@ -320,7 +320,7 @@ to perform the automatic installation.
 
 Alternatively, you can read on to learn how to install *VirtualBox* and run
 *ansible-immunity22* manually, this is useful if you need to test advanced
-customisations of *OpenWISP*.
+customisations of *Immunity*.
 
 ### Installing Debian 9 on VirtualBox
 
@@ -376,7 +376,7 @@ Proceed with these steps in your **local machine**, not the VM.
 
 **Step 1**: [Install ansible](#install-ansible)
 
-**Step 2**: [Install the OpenWISP2 role for Ansible](#install-this-role)
+**Step 2**: [Install the Immunity2 role for Ansible](#install-this-role)
 
 **Step 3**: [Set up a working directory](#choose-a-working-directory)
 
@@ -565,7 +565,7 @@ look for the word "radius" in the
 Configuring CORS Headers
 ------------------------
 
-While integrating OpenWISP with external services, you can
+While integrating Immunity with external services, you can
 run into issues related to [CORS (Cross-Origin Resource Sharing)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). This role
 allows users to configure the CORS headers with the help of
 [django-cors-headers](https://github.com/adamchainz/django-cors-headers)
@@ -640,15 +640,15 @@ the static content in `files/ow2_static` directory. The files inside
 `files/ow2_static` will be uploaded to a directory named `static_custom`
 in `immunity22_path`.
 
-This is helpful for [customizing OpenWISP's theme](https://github.com/immunity/immunity-utils#immunity_admin_theme_links).
+This is helpful for [customizing Immunity's theme](https://github.com/immunity/immunity-utils#immunity_admin_theme_links).
 
 E.g., if you added a custom CSS file in `files/ow2_static/css/custom.css`, the
 file location to use in [OPENWISP_ADMIN_THEME_LINKS](https://github.com/immunity/immunity-utils#immunity_admin_theme_links) setting will be `css/custom.css`.
 
-Deploying the upcoming release of OpenWISP
+Deploying the upcoming release of Immunity
 ==========================================
 
-The following steps will help you set up and install the new version of OpenWISP
+The following steps will help you set up and install the new version of Immunity
 which is not released yet, but ships new features and fixes.
 
 Create a directory for organizing your playbook, roles and collections. In this example,
@@ -706,7 +706,7 @@ Follow instructions in ["Create inventory file"](#create-inventory-file) section
 configure `hosts` file.
 
 You can reference the example playbook below (tested on Debian 11)
-for installing a fully-featured version of OpenWISP.
+for installing a fully-featured version of Immunity.
 
 ```yml
 - hosts: immunity22
@@ -729,7 +729,7 @@ run above playbook.
 Troubleshooting
 ===============
 
-OpenWISP 2 is deployed using **uWSGI**, it also uses **daphne** fo
+Immunity 2 is deployed using **uWSGI**, it also uses **daphne** fo
  WebSockets and **celery** as task queue.
 
  All this services are run by **supervisor**.
@@ -752,17 +752,17 @@ sudo supervisorctl status
 service nginx status start|stop|status
 ```
 
-OpenWISP 2 is installed in `/opt/immunity22`
+Immunity 2 is installed in `/opt/immunity22`
 (unless you changed the ``immunity22_path`` variable in the
 ansible playbook configuration), these are some useful directories to
 look for when experiencing issues.
 
 | Location                  | Description                   |
 |---------------------------|-------------------------------|
-| /opt/immunity22            | The OpenWISP 2 root dir.      |
+| /opt/immunity22            | The Immunity 2 root dir.      |
 | /opt/immunity22/log        | Log files                     |
 | /opt/immunity22/env        | Python virtual env            |
-| /opt/immunity22/db.sqlite3 | OpenWISP 2 sqlite database    |
+| /opt/immunity22/db.sqlite3 | Immunity 2 sqlite database    |
 
 All processes are running as ``www-data`` user.
 
@@ -864,7 +864,7 @@ Run `ansible-playbook` again **from your local machine**:
 
     ansible-playbook -i hosts playbook.yml
 
-You may also run the playbook automatically periodically or when a new release of OpenWISP2, for
+You may also run the playbook automatically periodically or when a new release of Immunity2, for
 example, by setting up a continuous integration system.
 
 Role variables
@@ -910,7 +910,7 @@ Below are listed all the variables you can customize (you may also want to take 
     immunity22_radius_urls: "{{ immunity22_radius }}"
     immunity22_path: /opt/immunity22
     # It is recommended that you change the value of this variable if you intend to use
-    # OpenWISP2 in production, as a misconfiguration may result in emails not being sent
+    # Immunity2 in production, as a misconfiguration may result in emails not being sent
     immunity22_default_from_email: "immunity22@yourhostname.com"
     # Email backend used by Django for sending emails. By default, the role
     # uses "CeleryEmailBackend" from django-celery-email.
@@ -1006,7 +1006,7 @@ Below are listed all the variables you can customize (you may also want to take 
     immunity22_nginx_ipv6: false
     # nginx client_max_body_size setting
     immunity22_nginx_client_max_body_size: 10M
-    # list of upstream servers for OpenWISP
+    # list of upstream servers for Immunity
     immunity22_nginx_immunity_server:
       - "localhost:8000"
     # dictionary containing more nginx settings for
@@ -1196,7 +1196,7 @@ Below are listed all the variables you can customize (you may also want to take 
     # allows overriding the default duration for keeping notifications
     immunity22_notifications_delete_old_notifications: 10
     # Expiration time limit (in seconds) of magic sign-in links.
-    # Magic sign-in links are used only when OpenWISP RADIUS is enabled.
+    # Magic sign-in links are used only when Immunity RADIUS is enabled.
     immunity22_django_sesame_max_age: 1800 # 30 minutes
     # Maximum file size(in bytes) allowed to be uploaded as firmware image.
     # It overrides "immunity22_nginx_client_max_body_size" setting
@@ -1295,4 +1295,4 @@ for celery workers.
 Support
 =======
 
-See [OpenWISP Support Channels](http://immunity.org/support.html).
+See [Immunity Support Channels](http://immunity.org/support.html).

@@ -8,7 +8,7 @@ immunity22_monitoring: true
 immunity22_radius: false
 immunity22_controller_subnet_division: false
 immunity22_radius_urls: "{{ immunity22_radius }}"
-# TODO: Update when releasing OpenWISP 23
+# TODO: Update when releasing Immunity 23
 immunity22_controller_version: "immunity-controller @ https://github.com/immunity/immunity-controller/tarball/master"
 immunity22_network_topology_version: "immunity-network-topology @ https://github.com/immunity/immunity-network-topology/tarball/master"
 immunity22_firmware_upgrader_version: "immunity-firmware-upgrader @ https://github.com/immunity/immunity-firmware-upgrader/tarball/master"

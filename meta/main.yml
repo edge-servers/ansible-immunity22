@@ -17,7 +17,7 @@ galaxy_info:
   role_name: immunity22
   namespace: immunity
   author: Federico Capoano
-  company: OpenWISP
+  company: Immunity
   description: Official role to install and upgrade immunity22 controller
   license: BSD
   min_ansible_version: "2.12"

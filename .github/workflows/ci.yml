@@ -1,6 +1,6 @@
 ---
 
-name: Ansible OpenWISP2 CI Build
+name: Ansible Immunity2 CI Build
 
 on:             # yamllint disable-line rule:truthy
   push:

@@ -48,7 +48,7 @@
 
     - name: Check Openwisp
       block:
-        - name: Check if OpenWISP is running
+        - name: Check if Immunity is running
           uri:
             url: "https://{{ inventory_hostname }}/admin/login/?next=/admin/"
             validate_certs: false
