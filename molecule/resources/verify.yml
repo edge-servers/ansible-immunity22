@@ -8,7 +8,7 @@
   tasks:
     - name: Run a specific subset of tests
       command: >
-        /opt/openwisp2/env/bin/python /opt/openwisp2/manage.py test --keepdb --exclude skip_prod \
+        /opt/immunity22/env/bin/python /opt/immunity22/manage.py test --keepdb --exclude skip_prod \
             openwisp_controller.pki.tests.test_admin \
             openwisp_controller.pki.tests.test_models \
             openwisp_controller.config.tests.test_tag \
@@ -54,7 +54,7 @@
             validate_certs: false
       rescue:
         - name: Get OpenWisp log
-          command: "tail -n 500 {{ openwisp2_path }}/log/*.log"
+          command: "tail -n 500 {{ immunity22_path }}/log/*.log"
           register: openwisp_log
 
         - name: Show OpenWisp log

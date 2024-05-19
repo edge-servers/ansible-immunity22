@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-- Creates the admin user when openwisp2 is installed
+- Creates the admin user when immunity22 is installed
 - Additionally creates the default organization if no organization is present
 - Modifies default Site object
 - Adds a default access credential and updates or creates default
@@ -8,7 +8,7 @@
 """
 import os
 import django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'openwisp2.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'immunity22.settings')
 django.setup()
 
 from django.conf import settings

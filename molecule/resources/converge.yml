@@ -5,13 +5,13 @@
   become: true
 
   vars:
-    openwisp2_network_topology: true
-    openwisp2_firmware_upgrader: true
-    openwisp2_radius: true
-    openwisp2_controller_subnet_division: true
-    openwisp2_uwsgi_extra_conf: |
+    immunity22_network_topology: true
+    immunity22_firmware_upgrader: true
+    immunity22_radius: true
+    immunity22_controller_subnet_division: true
+    immunity22_uwsgi_extra_conf: |
       single-interpreter=True
-    openwisp2_usage_metric_collection: false
+    immunity22_usage_metric_collection: false
 
   pre_tasks:
     - name: Update apt cache
@@ -26,4 +26,4 @@
         state: absent
 
   roles:
-    - role: openwisp.openwisp2
+    - role: openwisp.immunity22

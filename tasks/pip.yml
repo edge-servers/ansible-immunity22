@@ -9,7 +9,7 @@
       - attrs
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   retries: 5
@@ -23,7 +23,7 @@
       - jsonfield2
     state: absent
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   retries: 2
@@ -32,14 +32,14 @@
   until: result is success
   notify: Reload application
 
-- name: Install openwisp2 controller and its dependencies
+- name: Install immunity22 controller and its dependencies
   pip:
     name:
-      - "{{ openwisp2_controller_version }}"
+      - "{{ immunity22_controller_version }}"
       - service_identity
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
     LC_CTYPE: "en_US.UTF-8"
@@ -57,7 +57,7 @@
       - channels-redis~=3.4.0
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   retries: 1
@@ -70,7 +70,7 @@
     name: "django-redis>=4.9.0"
     state: present
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   notify: Reload application
@@ -79,13 +79,13 @@
   register: result
   until: result is success
 
-- name: Install openwisp2 network topology and its dependencies
-  when: openwisp2_network_topology
+- name: Install immunity22 network topology and its dependencies
+  when: immunity22_network_topology
   pip:
-    name: "{{ openwisp2_network_topology_version }}"
+    name: "{{ immunity22_network_topology_version }}"
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   notify: Reload application
@@ -97,12 +97,12 @@
     - molecule-idempotence-notest
 
 - name: Install openwisp firmware upgrader and its dependencies
-  when: openwisp2_firmware_upgrader
+  when: immunity22_firmware_upgrader
   pip:
-    name: "{{ openwisp2_firmware_upgrader_version }}"
+    name: "{{ immunity22_firmware_upgrader_version }}"
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   notify: Reload application
@@ -114,12 +114,12 @@
     - molecule-idempotence-notest
 
 - name: Install openwisp monitoring and its dependencies
-  when: openwisp2_monitoring
+  when: immunity22_monitoring
   pip:
-    name: "{{ openwisp2_monitoring_version }}"
+    name: "{{ immunity22_monitoring_version }}"
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   notify: Reload application
@@ -130,13 +130,13 @@
   tags:
     - molecule-idempotence-notest
 
-- name: Install openwisp2_radius and its dependencies
-  when: openwisp2_radius
+- name: Install immunity22_radius and its dependencies
+  when: immunity22_radius
   pip:
-    name: "{{ openwisp2_radius_version }}"
+    name: "{{ immunity22_radius_version }}"
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   notify: Reload application
@@ -148,12 +148,12 @@
     - molecule-idempotence-notest
 
 - name: Install django-cors-headers
-  when: openwisp2_django_cors.get('enabled')
+  when: immunity22_django_cors.get('enabled')
   pip:
     name: django-cors-headers
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   retries: 5
@@ -164,10 +164,10 @@
 
 - name: Install extra python packages
   pip:
-    name: "{{ openwisp2_extra_python_packages }}"
+    name: "{{ immunity22_extra_python_packages }}"
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   retries: 5
@@ -183,7 +183,7 @@
       - django-pipeline~=2.0.0
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   retries: 5
@@ -197,7 +197,7 @@
     name: uwsgi
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   retries: 5
@@ -207,12 +207,12 @@
   notify: Reload application
 
 - name: Install psycopg2
-  when: openwisp2_database.engine in ["django.db.backends.postgresql", "django.contrib.gis.db.backends.postgis"]
+  when: immunity22_database.engine in ["django.db.backends.postgresql", "django.contrib.gis.db.backends.postgis"]
   pip:
     name: psycopg2
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   retries: 5
@@ -222,12 +222,12 @@
   notify: Reload application
 
 - name: Install MySQL-python
-  when: openwisp2_database.engine in ["django.db.backends.mysql", "django.contrib.gis.db.backends.mysql"]
+  when: immunity22_database.engine in ["django.db.backends.mysql", "django.contrib.gis.db.backends.mysql"]
   pip:
     name: MySQL-python
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   retries: 5
@@ -237,12 +237,12 @@
   notify: Reload application
 
 - name: Install raven (sentry client)
-  when: openwisp2_sentry.get('dsn')
+  when: immunity22_sentry.get('dsn')
   pip:
     name: raven
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   retries: 5
@@ -256,10 +256,10 @@
     name: django-celery-email
     state: latest
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
-  when: openwisp2_email_backend == "djcelery_email.backends.CeleryEmailBackend"
+  when: immunity22_email_backend == "djcelery_email.backends.CeleryEmailBackend"
   retries: 5
   delay: 10
   register: result
@@ -268,10 +268,10 @@
 
 - name: Install django
   pip:
-    name: "{{ openwisp2_django_version }}"
+    name: "{{ immunity22_django_version }}"
     state: present
     virtualenv: "{{ virtualenv_path }}"
-    virtualenv_python: "{{ openwisp2_python }}"
+    virtualenv_python: "{{ immunity22_python }}"
   environment:
     SETUPTOOLS_USE_DISTUTILS: stdlib
   retries: 5

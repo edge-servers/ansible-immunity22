@@ -1,89 +1,89 @@
 ---
 
-openwisp2_python: python3
+immunity22_python: python3
 ansible_python_interpreter: /usr/bin/python3
-openwisp2_network_topology: false
-openwisp2_firmware_upgrader: false
-openwisp2_monitoring: true
-openwisp2_radius: false
-openwisp2_controller_subnet_division: false
-openwisp2_radius_urls: "{{ openwisp2_radius }}"
+immunity22_network_topology: false
+immunity22_firmware_upgrader: false
+immunity22_monitoring: true
+immunity22_radius: false
+immunity22_controller_subnet_division: false
+immunity22_radius_urls: "{{ immunity22_radius }}"
 # TODO: Update when releasing OpenWISP 23
-openwisp2_controller_version: "openwisp-controller @ https://github.com/openwisp/openwisp-controller/tarball/master"
-openwisp2_network_topology_version: "openwisp-network-topology @ https://github.com/openwisp/openwisp-network-topology/tarball/master"
-openwisp2_firmware_upgrader_version: "openwisp-firmware-upgrader @ https://github.com/openwisp/openwisp-firmware-upgrader/tarball/master"
-openwisp2_monitoring_version: "openwisp-monitoring @ https://github.com/openwisp/openwisp-monitoring/tarball/master"
-openwisp2_radius_version: "openwisp-radius @ https://github.com/openwisp/openwisp-radius/tarball/master"
-openwisp2_django_version: "django~=4.2.0"
-openwisp2_extra_python_packages:
+immunity22_controller_version: "openwisp-controller @ https://github.com/openwisp/openwisp-controller/tarball/master"
+immunity22_network_topology_version: "openwisp-network-topology @ https://github.com/openwisp/openwisp-network-topology/tarball/master"
+immunity22_firmware_upgrader_version: "openwisp-firmware-upgrader @ https://github.com/openwisp/openwisp-firmware-upgrader/tarball/master"
+immunity22_monitoring_version: "openwisp-monitoring @ https://github.com/openwisp/openwisp-monitoring/tarball/master"
+immunity22_radius_version: "openwisp-radius @ https://github.com/openwisp/openwisp-radius/tarball/master"
+immunity22_django_version: "django~=4.2.0"
+immunity22_extra_python_packages:
     - bpython
     - "drf-yasg==1.21.5"
-openwisp2_extra_django_apps: []
-openwisp2_extra_django_settings: {}
-openwisp2_extra_django_settings_instructions: []
-openwisp2_controller_urls: true
-openwisp2_extra_urls: []
-openwisp2_websocket_extra_imports: []
-openwisp2_websocket_extra_routes: []
-openwisp2_path: "/opt/openwisp2"
-openwisp2_default_from_email: "openwisp2@{{ inventory_hostname }}"
-openwisp2_email_backend: "djcelery_email.backends.CeleryEmailBackend"
-openwisp2_email_timeout: 10
-openwisp2_database:
+immunity22_extra_django_apps: []
+immunity22_extra_django_settings: {}
+immunity22_extra_django_settings_instructions: []
+immunity22_controller_urls: true
+immunity22_extra_urls: []
+immunity22_websocket_extra_imports: []
+immunity22_websocket_extra_routes: []
+immunity22_path: "/opt/immunity22"
+immunity22_default_from_email: "immunity22@{{ inventory_hostname }}"
+immunity22_email_backend: "djcelery_email.backends.CeleryEmailBackend"
+immunity22_email_timeout: 10
+immunity22_database:
     engine: "openwisp_utils.db.backends.spatialite"
-    name: "{{ openwisp2_path }}/db.sqlite3"
+    name: "{{ immunity22_path }}/db.sqlite3"
     user: ""
     password: ""
     host: ""
     port: ""
     options: {}
-openwisp2_spatialite_path: "mod_spatialite.so"
-openwisp2_language_code: "en-gb"
-openwisp2_time_zone: "UTC"
-openwisp2_context: {}
-openwisp2_allowed_hosts: []
-openwisp2_leaflet_config: {}
-openwisp2_geocoding_check: true
-openwisp2_ssl_cert: "{{ openwisp2_path }}/ssl/server.crt"
-openwisp2_ssl_key: "{{ openwisp2_path }}/ssl/server.key"
-openwisp2_ssl_country: "US"
-openwisp2_ssl_state: "California"
-openwisp2_ssl_locality: "San Francisco"
-openwisp2_ssl_organization: "IT dep."
-openwisp2_ssl_common_name: "{{ inventory_hostname }}"
-openwisp2_http_allowed_ip: false
-openwisp2_nginx_install: true
-openwisp2_nginx_openwisp_server:
-    - "unix://{{ openwisp2_path }}/uwsgi.sock"
-openwisp2_nginx_spdy: false
-openwisp2_nginx_http2: false
-openwisp2_nginx_ipv6: false
-openwisp2_nginx_client_max_body_size: 20M
-openwisp2_nginx_csp: >
+immunity22_spatialite_path: "mod_spatialite.so"
+immunity22_language_code: "en-gb"
+immunity22_time_zone: "UTC"
+immunity22_context: {}
+immunity22_allowed_hosts: []
+immunity22_leaflet_config: {}
+immunity22_geocoding_check: true
+immunity22_ssl_cert: "{{ immunity22_path }}/ssl/server.crt"
+immunity22_ssl_key: "{{ immunity22_path }}/ssl/server.key"
+immunity22_ssl_country: "US"
+immunity22_ssl_state: "California"
+immunity22_ssl_locality: "San Francisco"
+immunity22_ssl_organization: "IT dep."
+immunity22_ssl_common_name: "{{ inventory_hostname }}"
+immunity22_http_allowed_ip: false
+immunity22_nginx_install: true
+immunity22_nginx_openwisp_server:
+    - "unix://{{ immunity22_path }}/uwsgi.sock"
+immunity22_nginx_spdy: false
+immunity22_nginx_http2: false
+immunity22_nginx_ipv6: false
+immunity22_nginx_client_max_body_size: 20M
+immunity22_nginx_csp: >
     "default-src http: https: data: blob: 'unsafe-inline';
     script-src 'unsafe-eval' https: 'unsafe-inline' 'self';
     frame-ancestors 'self'; connect-src https://{{ inventory_hostname }} wss: 'self';
     worker-src https://{{ inventory_hostname }} blob: 'self';" always;
-openwisp2_uwsgi_gid: null
-openwisp2_admin_allowed_network: null
-openwisp2_install_ntp: true
-openwisp2_sentry:
+immunity22_uwsgi_gid: null
+immunity22_admin_allowed_network: null
+immunity22_install_ntp: true
+immunity22_sentry:
     dsn: false
-openwisp2_default_cert_validity: 1825
-openwisp2_default_ca_validity: 3650
-openwisp2_default_organization_id: 78f74fdd-67c6-4064-97e1-ce761da30745
-openwisp2_notifications_delete_old_notifications: 90
-openwisp2_firmware_upgrader_max_file_size: 31457280  # 30MB
-openwisp2_topology_update_frequency:
+immunity22_default_cert_validity: 1825
+immunity22_default_ca_validity: 3650
+immunity22_default_organization_id: 78f74fdd-67c6-4064-97e1-ce761da30745
+immunity22_notifications_delete_old_notifications: 90
+immunity22_firmware_upgrader_max_file_size: 31457280  # 30MB
+immunity22_topology_update_frequency:
     day: "*"
     hour: "*"
     minute: "*/5"
-openwisp2_topology_save_snapshot_frequency:
+immunity22_topology_save_snapshot_frequency:
     day: "*"
     hour: "23"
     minute: "30"
-openwisp2_django_sesame_max_age: 1800  # 30 minutes
-openwisp2_nginx_ssl_config:
+immunity22_django_sesame_max_age: 1800  # 30 minutes
+immunity22_nginx_ssl_config:
     gzip: "on"
     gzip_comp_level: "6"
     gzip_proxied: "any"
@@ -98,77 +98,77 @@ openwisp2_nginx_ssl_config:
         - "application/xml"
         - "application/x-font-ttf"
         - "font/opentype"
-openwisp2_redis_install: true
-openwisp2_redis_host: localhost
-openwisp2_redis_port: 6379
-openwisp2_redis_cache_url: "redis://{{ openwisp2_redis_host }}:{{ openwisp2_redis_port }}/1"
-openwisp2_influxdb_install: true
-openwisp2_timeseries_database:
+immunity22_redis_install: true
+immunity22_redis_host: localhost
+immunity22_redis_port: 6379
+immunity22_redis_cache_url: "redis://{{ immunity22_redis_host }}:{{ immunity22_redis_port }}/1"
+immunity22_influxdb_install: true
+immunity22_timeseries_database:
     backend: "openwisp_monitoring.db.backends.influxdb"
     user: "openwisp"
     password: "openwisp"
-    name: "openwisp2"
+    name: "immunity22"
     host: "localhost"
     port: 8086
-openwisp2_monitoring_default_retention_policy: "26280h0m0s"  # 3 years
-openwisp2_nginx_access_log: "{{ openwisp2_path }}/log/nginx.access.log"
-openwisp2_nginx_error_log: "{{ openwisp2_path }}/log/nginx.error.log error"
-openwisp2_celerybeat: true
-# keep backward compatibility with old variable openwisp2_eventlet_concurrency
-openwisp2_celery_concurrency: "{{ openwisp2_eventlet_concurrency | default(1) }}"
-openwisp2_celery_autoscale: null
-openwisp2_celery_prefetch_multiplier: null
-openwisp2_celery_optimization: default
-openwisp2_celery_network: true
-openwisp2_celery_network_concurrency: 1
-openwisp2_celery_network_autoscale: null
-openwisp2_celery_network_prefetch_multiplier: 10
-openwisp2_celery_network_optimization: fair
-openwisp2_celery_firmware_upgrader: true
-openwisp2_celery_firmware_upgrader_concurrency: 1
-openwisp2_celery_firmware_upgrader_autoscale: null
-openwisp2_celery_firmware_upgrader_prefetch_multiplier: 1
-openwisp2_celery_firmware_upgrader_optimization: fair
-openwisp2_celery_monitoring: true
-openwisp2_celery_monitoring_concurrency: 2
-openwisp2_celery_monitoring_autoscale: null
-openwisp2_celery_monitoring_prefetch_multiplier: 10
-openwisp2_celery_monitoring_optimization: fair
-openwisp2_celery_task_routes_defaults: true
-openwisp2_celery_broker_url: redis://{{ openwisp2_redis_host }}:{{ openwisp2_redis_port }}/3
-openwisp2_celery_task_acks_late: true
-openwisp2_celery_broker_max_tries: 10
-openwisp2_django_celery_logging: false
-openwisp2_postfix_install: true
+immunity22_monitoring_default_retention_policy: "26280h0m0s"  # 3 years
+immunity22_nginx_access_log: "{{ immunity22_path }}/log/nginx.access.log"
+immunity22_nginx_error_log: "{{ immunity22_path }}/log/nginx.error.log error"
+immunity22_celerybeat: true
+# keep backward compatibility with old variable immunity22_eventlet_concurrency
+immunity22_celery_concurrency: "{{ immunity22_eventlet_concurrency | default(1) }}"
+immunity22_celery_autoscale: null
+immunity22_celery_prefetch_multiplier: null
+immunity22_celery_optimization: default
+immunity22_celery_network: true
+immunity22_celery_network_concurrency: 1
+immunity22_celery_network_autoscale: null
+immunity22_celery_network_prefetch_multiplier: 10
+immunity22_celery_network_optimization: fair
+immunity22_celery_firmware_upgrader: true
+immunity22_celery_firmware_upgrader_concurrency: 1
+immunity22_celery_firmware_upgrader_autoscale: null
+immunity22_celery_firmware_upgrader_prefetch_multiplier: 1
+immunity22_celery_firmware_upgrader_optimization: fair
+immunity22_celery_monitoring: true
+immunity22_celery_monitoring_concurrency: 2
+immunity22_celery_monitoring_autoscale: null
+immunity22_celery_monitoring_prefetch_multiplier: 10
+immunity22_celery_monitoring_optimization: fair
+immunity22_celery_task_routes_defaults: true
+immunity22_celery_broker_url: redis://{{ immunity22_redis_host }}:{{ immunity22_redis_port }}/3
+immunity22_celery_task_acks_late: true
+immunity22_celery_broker_max_tries: 10
+immunity22_django_celery_logging: false
+immunity22_postfix_install: true
 postfix_smtpd_relay_restrictions_override: "permit_sasl_authenticated, permit_mynetworks, check_relay_domains, reject_unauth_destination, reject"
-openwisp2_uwsgi_processes: 1
-openwisp2_uwsgi_threads: 1
-openwisp2_uwsgi_listen: 100
-openwisp2_uwsgi_socket: "{{ openwisp2_path }}/uwsgi.sock"
-openwisp2_uwsgi_extra_conf: |
+immunity22_uwsgi_processes: 1
+immunity22_uwsgi_threads: 1
+immunity22_uwsgi_listen: 100
+immunity22_uwsgi_socket: "{{ immunity22_path }}/uwsgi.sock"
+immunity22_uwsgi_extra_conf: |
   single-interpreter=True
   log-4xx=True
   log-5xx=True
   disable-logging=True
   auto-procname=True
-openwisp2_daphne_install: true
-openwisp2_daphne_processes: 1
-openwisp2_daphne_websocket_timeout: 3600  # in seconds
+immunity22_daphne_install: true
+immunity22_daphne_processes: 1
+immunity22_daphne_websocket_timeout: 3600  # in seconds
 # internationalization
-openwisp2_internationalization: false
-openwisp2_users_auth_api: true
-openwisp2_users_user_password_expiration: 0
-openwisp2_users_staff_user_password_expiration: 0
-openwisp2_radius_sms_backend: "sendsms.backends.console.SmsBackend"
-openwisp2_radius_sms_token_max_ip_daily: 25
-openwisp2_radius_delete_old_radiusbatch_users: 365
-openwisp2_radius_cleanup_stale_radacct: 1
-openwisp2_radius_delete_old_postauth: 365
-openwisp2_radius_delete_old_radacct: 365
-openwisp2_radius_unverify_inactive_users: 0
-openwisp2_radius_delete_inactive_users: 0
-openwisp2_radius_allowed_hosts: ["127.0.0.1"]
-openwisp2_freeradius_install: true
+immunity22_internationalization: false
+immunity22_users_auth_api: true
+immunity22_users_user_password_expiration: 0
+immunity22_users_staff_user_password_expiration: 0
+immunity22_radius_sms_backend: "sendsms.backends.console.SmsBackend"
+immunity22_radius_sms_token_max_ip_daily: 25
+immunity22_radius_delete_old_radiusbatch_users: 365
+immunity22_radius_cleanup_stale_radacct: 1
+immunity22_radius_delete_old_postauth: 365
+immunity22_radius_delete_old_radacct: 365
+immunity22_radius_unverify_inactive_users: 0
+immunity22_radius_delete_inactive_users: 0
+immunity22_radius_allowed_hosts: ["127.0.0.1"]
+immunity22_freeradius_install: true
 freeradius_dir: /etc/freeradius
 freeradius_mods_available_dir: "{{ freeradius_dir }}/mods-available"
 freeradius_mods_enabled_dir: "{{ freeradius_dir }}/mods-enabled"
@@ -190,8 +190,8 @@ freeradius_db_map:
         driver: rlm_sql_mysql
         dialect: mysql
 freeradius_sql:
-    driver: "{{ freeradius_db_map[openwisp2_database.engine].driver }}"
-    dialect: "{{ freeradius_db_map[openwisp2_database.engine].dialect }}"
+    driver: "{{ freeradius_db_map[immunity22_database.engine].driver }}"
+    dialect: "{{ freeradius_db_map[immunity22_database.engine].dialect }}"
 freeradius_rest:
     url: "https://{{ inventory_hostname }}/api/v1/freeradius"
 freeradius_expire_attr_after_seconds: 86400
@@ -207,13 +207,13 @@ cron_delete_old_radacct: "'hour': 1, 'minute': 30"
 cron_unverify_inactive_users: "'hour': 1, 'minute': 45"
 cron_delete_inactive_users: "'hour': 1, 'minute': 55"
 # Cross-Origin Resource Sharing (CORS) settings
-openwisp2_django_cors:
+immunity22_django_cors:
     enabled: false
     allowed_origins_list: []
     replace_https_referer: false
-openwisp2_extra_supervisor_restart: []
-openwisp2_usage_metric_collection: null
+immunity22_extra_supervisor_restart: []
+immunity22_usage_metric_collection: null
 # allow disabling celery beat tasks if needed
-openwisp2_monitoring_periodic_tasks: true
-openwisp2_radius_periodic_tasks: true
-openwisp2_usage_metric_collection_periodic_tasks: true
+immunity22_monitoring_periodic_tasks: true
+immunity22_radius_periodic_tasks: true
+immunity22_usage_metric_collection_periodic_tasks: true

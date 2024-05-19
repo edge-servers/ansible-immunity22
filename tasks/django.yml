@@ -1,22 +1,22 @@
 ---
 
-- name: Create {{ openwisp2_path }}
+- name: Create {{ immunity22_path }}
   file:
-    path: "{{ openwisp2_path }}"
+    path: "{{ immunity22_path }}"
     state: directory
     group: "{{ www_group }}"
     mode: 0770
 
-- name: Create "{{ openwisp2_path }}/openwisp2"
+- name: Create "{{ immunity22_path }}/immunity22"
   file:
-    path: "{{ openwisp2_path }}/openwisp2"
+    path: "{{ immunity22_path }}/immunity22"
     state: directory
     group: "{{ www_group }}"
     mode: 0770
 
-- name: Create "{{ openwisp2_path }}/log"
+- name: Create "{{ immunity22_path }}/log"
   file:
-    path: "{{ openwisp2_path }}/log"
+    path: "{{ immunity22_path }}/log"
     state: directory
     group: "{{ www_group }}"
     mode: 0770
@@ -24,36 +24,36 @@
   tags:
     - molecule-idempotence-notest
 
-- name: Create "{{ openwisp2_path }}/static_custom"
+- name: Create "{{ immunity22_path }}/static_custom"
   file:
-    path: "{{ openwisp2_path }}/static_custom"
+    path: "{{ immunity22_path }}/static_custom"
     state: directory
     group: "{{ www_group }}"
     mode: 0770
   tags:
-    - openwisp2_theme
+    - immunity22_theme
 
 - name: Template manage.py
   notify: Reload application
   template:
     src: manage.py
-    dest: "{{ openwisp2_path }}/manage.py"
+    dest: "{{ immunity22_path }}/manage.py"
     group: "{{ www_group }}"
     mode: 0754
 
 - name: Template celery.py
   notify: Reload application
   template:
-    src: openwisp2/celery.py
-    dest: "{{ openwisp2_path }}/openwisp2/celery.py"
+    src: immunity22/celery.py
+    dest: "{{ immunity22_path }}/immunity22/celery.py"
     group: "{{ www_group }}"
     mode: 0640
 
 - name: Template __init__.py
   notify: Reload application
   template:
-    src: openwisp2/__init__.py
-    dest: "{{ openwisp2_path }}/openwisp2/__init__.py"
+    src: immunity22/__init__.py
+    dest: "{{ immunity22_path }}/immunity22/__init__.py"
     group: "{{ www_group }}"
     mode: 0640
   tags: [django_init]
@@ -61,37 +61,37 @@
 - name: Template urls.py
   notify: Reload application
   template:
-    src: openwisp2/urls.py
-    dest: "{{ openwisp2_path }}/openwisp2/urls.py"
+    src: immunity22/urls.py
+    dest: "{{ immunity22_path }}/immunity22/urls.py"
     group: "{{ www_group }}"
     mode: 0640
 
 - name: Template wsgi.py
   notify: Reload application
   template:
-    src: openwisp2/wsgi.py
-    dest: "{{ openwisp2_path }}/openwisp2/wsgi.py"
+    src: immunity22/wsgi.py
+    dest: "{{ immunity22_path }}/immunity22/wsgi.py"
     group: "{{ www_group }}"
     mode: 0640
 
 - name: Template asgi.py
   notify: Reload application
   template:
-    src: openwisp2/asgi.py
-    dest: "{{ openwisp2_path }}/openwisp2/asgi.py"
+    src: immunity22/asgi.py
+    dest: "{{ immunity22_path }}/immunity22/asgi.py"
     group: "{{ www_group }}"
     mode: 0640
 
-# set openwisp2_secret_key if not defined explicitly
+# set immunity22_secret_key if not defined explicitly
 - import_tasks: django_secret_key.yml
-  when: openwisp2_secret_key is not defined
+  when: immunity22_secret_key is not defined
   tags: [django_settings]
 
 - name: Template settings.py
   notify: Reload application
   template:
-    src: openwisp2/settings.py
-    dest: "{{ openwisp2_path }}/openwisp2/settings.py"
+    src: immunity22/settings.py
+    dest: "{{ immunity22_path }}/immunity22/settings.py"
     group: "{{ www_group }}"
     mode: 0640
   tags: [django_settings]
@@ -99,13 +99,13 @@
 - name: Template routing.py
   notify: Reload application
   template:
-    src: openwisp2/routing.py
-    dest: "{{ openwisp2_path }}/openwisp2/routing.py"
+    src: immunity22/routing.py
+    dest: "{{ immunity22_path }}/immunity22/routing.py"
     group: "{{ www_group }}"
     mode: 0640
 
 - name: Start redis for migration
-  when: openwisp2_redis_install
+  when: immunity22_redis_install
   service:
     name: redis
     state: started
@@ -113,9 +113,9 @@
 - name: Run geocoding check
   become: true
   become_user: "{{ www_user }}"
-  when: openwisp2_geocoding_check
+  when: immunity22_geocoding_check
   django_manage:
-    app_path: "{{ openwisp2_path }}"
+    app_path: "{{ immunity22_path }}"
     command: "check --deploy --tag geocoding"
     virtualenv: "{{ virtualenv_path }}"
 
@@ -124,21 +124,21 @@
   become: true
   become_user: "{{ www_user }}"
   django_manage:
-    app_path: "{{ openwisp2_path }}"
+    app_path: "{{ immunity22_path }}"
     command: migrate
     virtualenv: "{{ virtualenv_path }}"
 
 - name: Set permissions to sqlite db
-  when: openwisp2_database.engine == "django.db.backends.sqlite3"
+  when: immunity22_database.engine == "django.db.backends.sqlite3"
   file:
-    path: "{{ openwisp2_database.name }}"
+    path: "{{ immunity22_database.name }}"
     state: file
     group: "{{ www_group }}"
     mode: 0770
 
-- name: Set permissions to "{{ openwisp2_path }}/static"
+- name: Set permissions to "{{ immunity22_path }}/static"
   file:
-    path: "{{ openwisp2_path }}/static"
+    path: "{{ immunity22_path }}/static"
     state: directory
     group: "{{ www_group }}"
     owner: "{{ www_user }}"
@@ -147,38 +147,38 @@
     recurse: true
   tags:
     - molecule-idempotence-notest
-    - openwisp2_theme
+    - immunity22_theme
 
 - name: Copy static files
   become: true
   copy:
     src: ow2_static/
-    dest: "{{ openwisp2_path }}/static_custom"
+    dest: "{{ immunity22_path }}/static_custom"
     owner: "{{ www_user }}"
     group: "{{ www_group }}"
     mode: 0640
   failed_when: false
   tags:
-    - openwisp2_theme
+    - immunity22_theme
 
 - name: Collectstatic
   notify: Reload application
   become: true
   become_user: "{{ www_user }}"
   django_manage:
-    app_path: "{{ openwisp2_path }}"
+    app_path: "{{ immunity22_path }}"
     command: "collectstatic --noinput"
     virtualenv: "{{ virtualenv_path }}"
   register: collectstatic_output
   changed_when: '"\n0 static files" not in collectstatic_output.out'
   tags:
     - molecule-idempotence-notest
-    - openwisp2_theme
+    - immunity22_theme
 
 # needed to run compilemessages
 # some .mo files are created in virtualenv_path
 - name: Set permissions to "{{ virtualenv_path }}"
-  when: openwisp2_internationalization
+  when: immunity22_internationalization
   file:
     path: "{{ virtualenv_path }}"
     state: directory
@@ -194,16 +194,16 @@
   notify: Reload application
   become: true
   become_user: "{{ www_user }}"
-  when: openwisp2_internationalization
+  when: immunity22_internationalization
   django_manage:
-    app_path: "{{ openwisp2_path }}"
+    app_path: "{{ immunity22_path }}"
     command: "compilemessages"
     virtualenv: "{{ virtualenv_path }}"
 
 - name: Create load_initial_data.py script
   template:
     src: load_initial_data.py
-    dest: "{{ openwisp2_path }}/load_initial_data.py"
+    dest: "{{ immunity22_path }}/load_initial_data.py"
     mode: 0754
 
 - name: Load initial data
@@ -216,4 +216,4 @@
     "created" in load_initial_data_result.stdout
     or "changed" in load_initial_data_result.stdout
   args:
-    chdir: "{{ openwisp2_path }}"
+    chdir: "{{ immunity22_path }}"

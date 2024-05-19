@@ -11,21 +11,21 @@ lint: |
   yamllint . || true
   ansible-lint || true
 platforms:
-  - name: "openwisp2-ubuntu2204"
+  - name: "immunity22-ubuntu2204"
     image: "geerlingguy/docker-ubuntu2204-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
-  - name: "openwisp2-ubuntu2004"
+  - name: "immunity22-ubuntu2004"
     image: "geerlingguy/docker-ubuntu2004-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: true
     pre_build_image: true
-  - name: "openwisp2-debian11"
+  - name: "immunity22-debian11"
     image: "geerlingguy/docker-debian11-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     volumes:
