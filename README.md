@@ -241,7 +241,7 @@ Clone `ansible-immunity22` and `Stouts.postfix` as follows:
 ```bash
     git clone https://github.com/edge-servers/ansible-immunity22.git edge-servers.immunity22
     git clone https://github.com/Stouts/Stouts.postfix
-    git clone https://github.com/edge-servers/ansible-ow-influxdb immunity.influxdb
+    git clone https://github.com/edge-servers/ansible-im-influxdb edge-servers.influxdb
 ```
 
 Now, go to the parent directory & create hosts file and playbook.yml:

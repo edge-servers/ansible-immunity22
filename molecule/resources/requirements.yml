@@ -4,6 +4,6 @@
   version: origin/develop
   name: Stouts.postfix
 
-- src: https://github.com/edge-servers/ansible-ow-influxdb
+- src: https://github.com/edge-servers/ansible-im-influxdb
   version: origin/master
-  name: immunity.influxdb
+  name: edge-servers.influxdb
