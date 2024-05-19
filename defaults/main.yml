@@ -9,11 +9,11 @@ immunity22_radius: false
 immunity22_controller_subnet_division: false
 immunity22_radius_urls: "{{ immunity22_radius }}"
 # TODO: Update when releasing OpenWISP 23
-immunity22_controller_version: "openwisp-controller @ https://github.com/openwisp/openwisp-controller/tarball/master"
-immunity22_network_topology_version: "openwisp-network-topology @ https://github.com/openwisp/openwisp-network-topology/tarball/master"
-immunity22_firmware_upgrader_version: "openwisp-firmware-upgrader @ https://github.com/openwisp/openwisp-firmware-upgrader/tarball/master"
-immunity22_monitoring_version: "openwisp-monitoring @ https://github.com/openwisp/openwisp-monitoring/tarball/master"
-immunity22_radius_version: "openwisp-radius @ https://github.com/openwisp/openwisp-radius/tarball/master"
+immunity22_controller_version: "immunity-controller @ https://github.com/immunity/immunity-controller/tarball/master"
+immunity22_network_topology_version: "immunity-network-topology @ https://github.com/immunity/immunity-network-topology/tarball/master"
+immunity22_firmware_upgrader_version: "immunity-firmware-upgrader @ https://github.com/immunity/immunity-firmware-upgrader/tarball/master"
+immunity22_monitoring_version: "immunity-monitoring @ https://github.com/immunity/immunity-monitoring/tarball/master"
+immunity22_radius_version: "immunity-radius @ https://github.com/immunity/immunity-radius/tarball/master"
 immunity22_django_version: "django~=4.2.0"
 immunity22_extra_python_packages:
     - bpython
@@ -30,7 +30,7 @@ immunity22_default_from_email: "immunity22@{{ inventory_hostname }}"
 immunity22_email_backend: "djcelery_email.backends.CeleryEmailBackend"
 immunity22_email_timeout: 10
 immunity22_database:
-    engine: "openwisp_utils.db.backends.spatialite"
+    engine: "immunity_utils.db.backends.spatialite"
     name: "{{ immunity22_path }}/db.sqlite3"
     user: ""
     password: ""
@@ -53,7 +53,7 @@ immunity22_ssl_organization: "IT dep."
 immunity22_ssl_common_name: "{{ inventory_hostname }}"
 immunity22_http_allowed_ip: false
 immunity22_nginx_install: true
-immunity22_nginx_openwisp_server:
+immunity22_nginx_immunity_server:
     - "unix://{{ immunity22_path }}/uwsgi.sock"
 immunity22_nginx_spdy: false
 immunity22_nginx_http2: false
@@ -104,9 +104,9 @@ immunity22_redis_port: 6379
 immunity22_redis_cache_url: "redis://{{ immunity22_redis_host }}:{{ immunity22_redis_port }}/1"
 immunity22_influxdb_install: true
 immunity22_timeseries_database:
-    backend: "openwisp_monitoring.db.backends.influxdb"
-    user: "openwisp"
-    password: "openwisp"
+    backend: "immunity_monitoring.db.backends.influxdb"
+    user: "immunity"
+    password: "immunity"
     name: "immunity22"
     host: "localhost"
     port: 8086
@@ -175,12 +175,12 @@ freeradius_mods_enabled_dir: "{{ freeradius_dir }}/mods-enabled"
 freeradius_mods_config_dir: "{{ freeradius_dir }}/mods-config"
 freeradius_sites_available_dir: "{{ freeradius_dir }}/sites-available"
 freeradius_sites_enabled_dir: "{{ freeradius_dir }}/sites-enabled"
-freeradius_openwisp_site_template_src: freeradius/openwisp_site.j2
+freeradius_immunity_site_template_src: freeradius/immunity_site.j2
 freeradius_db_map:
     django.contrib.gis.db.backends.spatialite:
         driver: rlm_sql_sqlite
         dialect: sqlite
-    openwisp_utils.db.backends.spatialite:
+    immunity_utils.db.backends.spatialite:
         driver: rlm_sql_sqlite
         dialect: sqlite
     django.contrib.gis.db.backends.postgis:
@@ -196,7 +196,7 @@ freeradius_rest:
     url: "https://{{ inventory_hostname }}/api/v1/freeradius"
 freeradius_expire_attr_after_seconds: 86400
 freeradius_safe_characters: "+@abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_: /"
-freeradius_openwisp_site_listen_ipaddr: "*"
+freeradius_immunity_site_listen_ipaddr: "*"
 cron_delete_old_notifications: "'hour': 0, 'minute': 0"
 cron_deactivate_expired_users: "'hour': 0, 'minute': 5"
 cron_delete_old_radiusbatch_users: "'hour': 0, 'minute': 10"

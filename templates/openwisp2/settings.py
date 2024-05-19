@@ -35,45 +35,45 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     # overrides allauth templates
     # must precede allauth
-    'openwisp_users.accounts',
+    'immunity_users.accounts',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'django_extensions',
     # immunity22 modules
-    'openwisp_users',
-    'openwisp_controller.pki',
-    'openwisp_controller.config',
-    'openwisp_controller.geo',
-    'openwisp_controller.connection',
+    'immunity_users',
+    'immunity_controller.pki',
+    'immunity_controller.config',
+    'immunity_controller.geo',
+    'immunity_controller.connection',
 {% if immunity22_controller_subnet_division %}
-    'openwisp_controller.subnet_division',
+    'immunity_controller.subnet_division',
 {% endif %}
 {% if immunity22_monitoring %}
-    'openwisp_monitoring.monitoring',
-    'openwisp_monitoring.device',
-    'openwisp_monitoring.check',
+    'immunity_monitoring.monitoring',
+    'immunity_monitoring.device',
+    'immunity_monitoring.check',
     'nested_admin',
 {% endif %}
-    'openwisp_notifications',
+    'immunity_notifications',
     'flat_json_widget',
 {% if immunity22_network_topology %}
-    'openwisp_network_topology',
+    'immunity_network_topology',
 {% endif %}
 {% if immunity22_firmware_upgrader %}
-    'openwisp_firmware_upgrader',
+    'immunity_firmware_upgrader',
 {% endif %}
-    'openwisp_ipam',
+    'immunity_ipam',
 {% if immunity22_radius %}
     'dj_rest_auth',
     'dj_rest_auth.registration',
-    'openwisp_radius',
+    'immunity_radius',
 {% endif %}
     # immunity22 admin theme
     # (must be loaded here)
-    'openwisp_utils.admin_theme',
+    'immunity_utils.admin_theme',
     {% if immunity22_usage_metric_collection is not false %}
-    'openwisp_utils.metric_collection',
+    'immunity_utils.metric_collection',
     {% endif %}
     'admin_auto_filters',
     # admin
@@ -118,7 +118,7 @@ PRIVATE_STORAGE_ROOT = os.path.join(BASE_DIR, 'private')
 OPENWISP_FIRMWARE_UPGRADER_MAX_FILE_SIZE = {{ immunity22_firmware_upgrader_max_file_size }}
 {% endif %}
 
-AUTH_USER_MODEL = 'openwisp_users.User'
+AUTH_USER_MODEL = 'immunity_users.User'
 SITE_ID = 1
 LOGIN_REDIRECT_URL = 'admin:index'
 ACCOUNT_LOGOUT_REDIRECT_URL = LOGIN_REDIRECT_URL
@@ -128,7 +128,7 @@ ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = 'email_confirmation_succ
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'openwisp_utils.staticfiles.DependencyFinder',
+    'immunity_utils.staticfiles.DependencyFinder',
 ]
 
 MIDDLEWARE = [
@@ -146,21 +146,21 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     {% if immunity22_users_user_password_expiration or immunity22_users_staff_user_password_expiration %}
-    'openwisp_users.middleware.PasswordExpirationMiddleware',
+    'immunity_users.middleware.PasswordExpirationMiddleware',
     {% endif %}
     'pipeline.middleware.MinifyHTMLMiddleware'
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'openwisp_users.backends.UsersAuthenticationBackend',
+    'immunity_users.backends.UsersAuthenticationBackend',
 ]
 
 {% if immunity22_radius %}
 OPENWISP_RADIUS_FREERADIUS_ALLOWED_HOSTS = {{ immunity22_radius_allowed_hosts }}
 REST_AUTH = {
     'SESSION_LOGIN': False,
-    'PASSWORD_RESET_SERIALIZER': 'openwisp_radius.api.serializers.PasswordResetSerializer',
-    'REGISTER_SERIALIZER': 'openwisp_radius.api.serializers.RegisterSerializer',
+    'PASSWORD_RESET_SERIALIZER': 'immunity_radius.api.serializers.PasswordResetSerializer',
+    'REGISTER_SERIALIZER': 'immunity_radius.api.serializers.RegisterSerializer',
 }
 
 # dj-rest-auth 3.0 changed the configuration settings.
@@ -168,10 +168,10 @@ REST_AUTH = {
 #
 # Backward compatible settings begins
 REST_AUTH_SERIALIZERS = {
-    'PASSWORD_RESET_SERIALIZER': 'openwisp_radius.api.serializers.PasswordResetSerializer',
+    'PASSWORD_RESET_SERIALIZER': 'immunity_radius.api.serializers.PasswordResetSerializer',
 }
 REST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'openwisp_radius.api.serializers.RegisterSerializer',
+    'REGISTER_SERIALIZER': 'immunity_radius.api.serializers.RegisterSerializer',
 }
 # Backward compatible settings ends
 
@@ -223,7 +223,7 @@ TEMPLATES = [
                 ('django.template.loaders.cached.Loader', [
                     'django.template.loaders.filesystem.Loader',
                     'django.template.loaders.app_directories.Loader',
-                    'openwisp_utils.loaders.DependencyLoader'
+                    'immunity_utils.loaders.DependencyLoader'
                 ]),
             ],
             'context_processors': [
@@ -231,9 +231,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'openwisp_utils.admin_theme.context_processor.menu_items',
-                'openwisp_utils.admin_theme.context_processor.admin_theme_settings',
-                'openwisp_notifications.context_processors.notification_api_settings',
+                'immunity_utils.admin_theme.context_processor.menu_items',
+                'immunity_utils.admin_theme.context_processor.admin_theme_settings',
+                'immunity_notifications.context_processors.notification_api_settings',
             ],
         },
     },
@@ -256,51 +256,51 @@ CELERY_BROKER_TRANSPORT_OPTIONS = {
 CELERY_BEAT_SCHEDULE = {
 {% if immunity22_users_user_password_expiration or immunity22_users_staff_user_password_expiration %}
     'password_expiry_email': {
-        'task': 'openwisp_users.tasks.password_expiration_email',
+        'task': 'immunity_users.tasks.password_expiration_email',
         'schedule': crontab(**{ {{ cron_password_expiration_email }} }),
     },
 {% endif %}
 {% if immunity22_notifications_delete_old_notifications %}
     'delete_old_notifications': {
-        'task': 'openwisp_notifications.tasks.delete_old_notifications',
+        'task': 'immunity_notifications.tasks.delete_old_notifications',
         'schedule': crontab(**{ {{ cron_delete_old_notifications }} }),
         'args': ({{ immunity22_notifications_delete_old_notifications }},),
     },
 {% endif %}
 {% if immunity22_monitoring and immunity22_monitoring_periodic_tasks %}
     'run_checks': {
-        'task': 'openwisp_monitoring.check.tasks.run_checks',
+        'task': 'immunity_monitoring.check.tasks.run_checks',
         'schedule': timedelta(minutes=5),
     },
 {% endif %}
 {% if immunity22_radius and immunity22_radius_periodic_tasks %}
     'deactivate_expired_users': {
-        'task': 'openwisp_radius.tasks.deactivate_expired_users',
+        'task': 'immunity_radius.tasks.deactivate_expired_users',
         'schedule': crontab(**{ {{ cron_deactivate_expired_users }} }),
         'args': None,
         'relative': True,
     },
     'delete_old_radiusbatch_users': {
-        'task': 'openwisp_radius.tasks.delete_old_radiusbatch_users',
+        'task': 'immunity_radius.tasks.delete_old_radiusbatch_users',
         'schedule': crontab(**{ {{ cron_delete_old_radiusbatch_users }} }),
         'args': [{{ immunity22_radius_delete_old_radiusbatch_users }}],
         'relative': True,
     },
     'cleanup_stale_radacct': {
-        'task': 'openwisp_radius.tasks.cleanup_stale_radacct',
+        'task': 'immunity_radius.tasks.cleanup_stale_radacct',
         'schedule': crontab(**{ {{ cron_cleanup_stale_radacct }} }),
         'args': [{{ immunity22_radius_cleanup_stale_radacct }}],
         'relative': True,
     },
     'delete_old_postauth': {
-        'task': 'openwisp_radius.tasks.delete_old_postauth',
+        'task': 'immunity_radius.tasks.delete_old_postauth',
         'schedule': crontab(**{ {{ cron_delete_old_postauth }} }),
         'args': [{{ immunity22_radius_delete_old_postauth }}],
         'relative': True,
     },
     {% if immunity22_radius_delete_old_radacct %}
         'delete_old_radacct': {
-            'task': 'openwisp_radius.tasks.delete_old_radacct',
+            'task': 'immunity_radius.tasks.delete_old_radacct',
             'schedule': crontab(**{ {{ cron_delete_old_radacct }} }),
             'args': [{{ immunity22_radius_delete_old_radacct }}],
             'relative': True,
@@ -308,14 +308,14 @@ CELERY_BEAT_SCHEDULE = {
     {% endif %}
     {% if immunity22_radius_unverify_inactive_users %}
         'unverify_inactive_users': {
-            'task': 'openwisp_radius.tasks.unverify_inactive_users',
+            'task': 'immunity_radius.tasks.unverify_inactive_users',
             'schedule': crontab(**{ {{ cron_unverify_inactive_users }} }),
             'relative': True,
         },
     {% endif %}
     {% if immunity22_radius_delete_inactive_users %}
         'delete_inactive_users': {
-            'task': 'openwisp_radius.tasks.delete_inactive_users',
+            'task': 'immunity_radius.tasks.delete_inactive_users',
             'schedule': crontab(**{ {{ cron_delete_inactive_users }} }),
             'relative': True,
         },
@@ -323,7 +323,7 @@ CELERY_BEAT_SCHEDULE = {
 {% endif %}
 {% if immunity22_usage_metric_collection is not false and immunity22_usage_metric_collection_periodic_tasks %}
     'send_usage_metrics': {
-        'task': 'openwisp_utils.metric_collection.tasks.send_usage_metrics',
+        'task': 'immunity_utils.metric_collection.tasks.send_usage_metrics',
         'schedule': timedelta(days=1),
     },
 {% endif %}
@@ -333,17 +333,17 @@ CELERY_BEAT_SCHEDULE = {
 CELERY_TASK_ROUTES = {
 {% if immunity22_celery_network %}
     # network operations, executed in the "network" queue
-    'openwisp_controller.connection.tasks.*': {'queue': 'network'},
+    'immunity_controller.connection.tasks.*': {'queue': 'network'},
 {% endif %}
 {% if immunity22_monitoring and immunity22_celery_monitoring %}
     # monitoring checks are executed in a dedicated "monitoring" queue
-    'openwisp_monitoring.check.tasks.perform_check': {'queue': 'monitoring'},
-    'openwisp_monitoring.monitoring.tasks.migrate_timeseries_database': {'queue': 'monitoring'},
+    'immunity_monitoring.check.tasks.perform_check': {'queue': 'monitoring'},
+    'immunity_monitoring.monitoring.tasks.migrate_timeseries_database': {'queue': 'monitoring'},
 {% endif %}
 {% if immunity22_firmware_upgrader and immunity22_celery_firmware_upgrader %}
     # firmware upgrade operations, executed in the "firmware_upgrader" queue
-    'openwisp_firmware_upgrader.tasks.upgrade_firmware': {'queue': 'firmware_upgrader'},
-    'openwisp_firmware_upgrader.tasks.batch_upgrade_operation': {'queue': 'firmware_upgrader'},
+    'immunity_firmware_upgrader.tasks.upgrade_firmware': {'queue': 'firmware_upgrader'},
+    'immunity_firmware_upgrader.tasks.batch_upgrade_operation': {'queue': 'firmware_upgrader'},
 {% endif %}
     # all other tasks are routed to the default queue (named "celery")
 }
@@ -407,7 +407,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
-    {'NAME': 'openwisp_users.password_validation.PasswordReuseValidator'}
+    {'NAME': 'immunity_users.password_validation.PasswordReuseValidator'}
 ]
 
 # Internationalization
@@ -525,7 +525,7 @@ LOGGING = {
 # HTML minification with django pipeline
 PIPELINE = {'PIPELINE_ENABLED': True}
 # static files minification and invalidation with django-compress-staticfiles
-STATICFILES_STORAGE = 'openwisp_utils.storage.CompressStaticFilesStorage'
+STATICFILES_STORAGE = 'immunity_utils.storage.CompressStaticFilesStorage'
 # GZIP compression is handled by nginx
 BROTLI_STATIC_COMPRESSION = False
 GZIP_STATIC_COMPRESSION = False
@@ -567,4 +567,4 @@ CORS_REPLACE_HTTPS_REFERER = {{ immunity22_django_cors.get('replace_https_refere
 CORS_ALLOWED_ORIGINS = {{ immunity22_django_cors.get('allowed_origins_list', []) }}
 {% endif %}
 
-TEST_RUNNER = 'openwisp_utils.metric_collection.tests.runner.MockRequestPostRunner'
+TEST_RUNNER = 'immunity_utils.metric_collection.tests.runner.MockRequestPostRunner'

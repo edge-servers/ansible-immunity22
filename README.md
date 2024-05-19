@@ -1,11 +1,11 @@
 ansible-immunity22
 =================
 
-[![Installing OpenWISP2](https://raw.githubusercontent.com/openwisp/ansible-immunity22/master/docs/install-immunity22.png)](https://www.youtube.com/watch?v=v_DUeFUGG8Q&index=1&list=PLPueLZei9c8_DEYgC5StOcR5bCAcQVfR8)
+[![Installing OpenWISP2](https://raw.githubusercontent.com/immunity/ansible-immunity22/master/docs/install-immunity22.png)](https://www.youtube.com/watch?v=v_DUeFUGG8Q&index=1&list=PLPueLZei9c8_DEYgC5StOcR5bCAcQVfR8)
 
-[![Build Status](https://github.com/openwisp/ansible-immunity22/workflows/Ansible%20OpenWISP2%20CI%20Build/badge.svg?branch=master)](https://github.com/openwisp/ansible-immunity22/actions?query=workflow%3A%22Ansible+OpenWISP2+CI+Build%22)
-[![Galaxy](http://img.shields.io/badge/galaxy-openwisp.immunity22-blue.svg?style=flat-square)](https://galaxy.ansible.com/ui/standalone/roles/openwisp/immunity22/)
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/openwisp/general)
+[![Build Status](https://github.com/immunity/ansible-immunity22/workflows/Ansible%20OpenWISP2%20CI%20Build/badge.svg?branch=master)](https://github.com/immunity/ansible-immunity22/actions?query=workflow%3A%22Ansible+OpenWISP2+CI+Build%22)
+[![Galaxy](http://img.shields.io/badge/galaxy-immunity.immunity22-blue.svg?style=flat-square)](https://galaxy.ansible.com/ui/standalone/roles/immunity/immunity22/)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/immunity/general)
 
 Ansible role that installs the OpenWISP Server Application.
 
@@ -18,7 +18,7 @@ Tested on **Debian (Bullseye)**, **Ubuntu (20/22 LTS)**.
 Demo
 ====
 
-[Try the OpenWISP Demo](https://openwisp.org/demo.html) to get a quick
+[Try the OpenWISP Demo](https://immunity.org/demo.html) to get a quick
 overview of what OpenWISP can do for you.
 
 Help OpenWISP
@@ -26,15 +26,15 @@ Help OpenWISP
 
 Like OpenWISP? Find out how to help us!
 
-- [Help us to grow our community](http://openwisp.io/docs/general/help-us.html)
-- [How to contribute to OpenWISP](http://openwisp.io/docs/developer/contributing.html)
+- [Help us to grow our community](http://immunity.io/docs/general/help-us.html)
+- [How to contribute to OpenWISP](http://immunity.io/docs/developer/contributing.html)
 
 Architecture
 ============
 
-For more information, see [OpenWISP Architecture](https://openwisp.io/docs/general/architecture.html).
+For more information, see [OpenWISP Architecture](https://immunity.io/docs/general/architecture.html).
 
-[![immunity22 modules diagram](https://raw.githubusercontent.com/openwisp/ansible-immunity22/master/docs/immunity22-modules-diagram.png)](https://openwisp.io/docs/general/architecture.html)
+[![immunity22 modules diagram](https://raw.githubusercontent.com/immunity/ansible-immunity22/master/docs/immunity22-modules-diagram.png)](https://immunity.io/docs/general/architecture.html)
 
 System Requirements
 ===================
@@ -72,7 +72,7 @@ Supported Operating Systems
 ---------------------------
 
 See the section "OS Platforms" on the
-[ansible-galaxy page of ansible-immunity22](https://galaxy.ansible.com/openwisp/immunity22).
+[ansible-galaxy page of ansible-immunity22](https://galaxy.ansible.com/immunity/immunity22).
 
 
 Usage (tutorial)
@@ -122,7 +122,7 @@ Install this role
 For the sake of simplicity, the easiest thing is to install this role **on your local machine**
 via `ansible-galaxy` (which was installed when installing ansible), therefore run:
 
-    ansible-galaxy install openwisp.immunity22
+    ansible-galaxy install immunity.immunity22
 
 Ensure that you have the [`community.general`](https://github.com/ansible-collections/community.general)
 and `ansible.posix` collections installed and up to date:
@@ -169,7 +169,7 @@ Create a new playbook file `playbook.yml` **on your local machine** with the fol
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - openwisp.immunity22
+    - immunity.immunity22
   vars:
     immunity22_default_from_email: "immunity22@immunity22.mydomain.com"
 ```
@@ -217,13 +217,13 @@ Now proceed with the following steps:
 2. update the `name` field of the default `Site` object to accurately display site name in email notifications
 3. edit the information of the default organization
 4. in the default organization you just updated, note down the automatically generated *shared secret*
-   option, you will need it to use the [auto-registration feature of openwisp-config](https://github.com/openwisp/openwisp-config#automatic-registration)
+   option, you will need it to use the [auto-registration feature of immunity-config](https://github.com/immunity/immunity-config#automatic-registration)
 5. this Ansible role creates a default template to update ``authorized_keys`` on networking devices
    using the default access credentials. The role will either use an existing SSH key pair or create
    a new one if no SSH key pair exists on the host machine.
 
 Now you are ready to start configuring your network! **If you need help** you can ask questions
-on one of the official [OpenWISP Support Channels](http://openwisp.org/support.html).
+on one of the official [OpenWISP Support Channels](http://immunity.org/support.html).
 
 Install ansible-immunity22 for development
 -----------------------------------------
@@ -232,16 +232,16 @@ If you need to modify the logic of this ansible role and you need to test your c
 First of all, create the directory where you want to place the repositories of the ansible roles and create directory roles.
 
 ```bash
-    mkdir -p ~/openwisp-dev/roles
-    cd ~/openwisp-dev/roles
+    mkdir -p ~/immunity-dev/roles
+    cd ~/immunity-dev/roles
 ```
 
 Clone `ansible-immunity22` and `Stouts.postfix` as follows:
 
 ```bash
-    git clone https://github.com/openwisp/ansible-immunity22.git openwisp.immunity22
+    git clone https://github.com/immunity/ansible-immunity22.git immunity.immunity22
     git clone https://github.com/Stouts/Stouts.postfix
-    git clone https://github.com/openwisp/ansible-ow-influxdb openwisp.influxdb
+    git clone https://github.com/immunity/ansible-ow-influxdb immunity.influxdb
 ```
 
 Now, go to the parent directory & create hosts file and playbook.yml:
@@ -275,8 +275,8 @@ To do that, proceed with the following steps:
 
 Clone repository by:
 
-    git clone https://github.com/<your_fork>/ansible-immunity22.git openwisp.immunity22
-    cd openwisp.immunity22
+    git clone https://github.com/<your_fork>/ansible-immunity22.git immunity.immunity22
+    cd immunity.immunity22
 
 **Step 2**: Install docker
 
@@ -314,7 +314,7 @@ way is to use a VirtualBox Virtual Machine (from here on VM).
 purposes** leveraging [Vagrant](https://www.vagrantup.com), a popular open source
 tool for building and maintaining portable virtual software development environments.
 
-To use this new way, clone the repository [vagrant-immunity22](https://github.com/openwisp/vagrant-immunity22),
+To use this new way, clone the repository [vagrant-immunity22](https://github.com/immunity/vagrant-immunity22),
 it contains the instructions (in the `README.md`) and the vagrant configuration
 to perform the automatic installation.
 
@@ -334,7 +334,7 @@ however we need to change a few things to get ansible working.
 Proceed with the installation as shown in the guide linked above, and come back
 here when you see this screen:
 
-![Screenshot of the Software Selection screen](https://raw.githubusercontent.com/openwisp/ansible-immunity22/master/docs/debian-software-selection.png)
+![Screenshot of the Software Selection screen](https://raw.githubusercontent.com/immunity/ansible-immunity22/master/docs/debian-software-selection.png)
 
 We're only running this as a server, so you can uncheck `Debian desktop environment`.
 Make sure `SSH server` and `standard system utilities` are checked.
@@ -345,7 +345,7 @@ and assign an IP address to the VM.
 - On the Main VirtualBox page, Go to `File > Host Network Manager`
 - Click the <kbd>+</kbd> icon to create a new adapter
 - Set the IPv4 address to `192.168.56.1` and the IPv4 Network Mask to `255.255.255.0`. You may need to select `Configure Adapter Manually` to do this. The IPv6 settings can be ignored
-  ![Screenshot of the Host-only network configuration screen](https://raw.githubusercontent.com/openwisp/ansible-immunity22/master/docs/host-only-network.png)
+  ![Screenshot of the Host-only network configuration screen](https://raw.githubusercontent.com/immunity/ansible-immunity22/master/docs/host-only-network.png)
 - Shut off your VM
 - In your VM settings, in the Network section, click Adapter 2 and Enable this Adapter
 - Select Host-only adapter and the name of the adapter you created
@@ -398,7 +398,7 @@ create an empty file named `playbook.yml` which contains the following:
 ```yaml
 - hosts: immunity22
   roles:
-    - openwisp.immunity22
+    - immunity.immunity22
   # the following line is needed only when an IP address is used as the inventory hostname
   vars:
       postfix_myhostname: localhost
@@ -421,14 +421,14 @@ password: admin
 Enabling the Monitoring module
 ------------------------------
 
-The [Monitoring module](https://openwisp.io/docs/user/monitoring.html)
+The [Monitoring module](https://immunity.io/docs/user/monitoring.html)
 is enabled by default, it can be disabled by setting
 ``immunity22_monitoring`` to ``false``.
 
 Enabling the Network Topology module
 ------------------------------------
 
-To enable the [Network Topology module](https://openwisp.io/docs/user/network-topology.html)
+To enable the [Network Topology module](https://immunity.io/docs/user/network-topology.html)
 you need to set `immunity22_network_topology` to `true` in
 your `playbook.yml` file. Here's a short summary of how to do this:
 
@@ -444,7 +444,7 @@ your `playbook.yml` file. Here's a short summary of how to do this:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - openwisp.immunity22
+    - immunity.immunity22
   vars:
     immunity22_network_topology: true
 ```
@@ -461,10 +461,10 @@ Enabling the Firmware Upgrader module
 -------------------------------------
 
 **Note**: It is encouraged that you read the
-[quick-start guide of openwisp-firmware-upgrader](https://openwisp.io/docs/user/firmware-upgrades.html#quickstart-guide)
+[quick-start guide of immunity-firmware-upgrader](https://immunity.io/docs/user/firmware-upgrades.html#quickstart-guide)
 before going ahead.
 
-To enable the [Firmware Upgrader](https://openwisp.io/docs/user/firmware-upgrades.html)
+To enable the [Firmware Upgrader](https://immunity.io/docs/user/firmware-upgrades.html)
 module you need to set `immunity22_firmware_upgrader` to `true` in
 your `playbook.yml` file. Here's a short summary of how to do this:
 
@@ -480,7 +480,7 @@ your `playbook.yml` file. Here's a short summary of how to do this:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - openwisp.immunity22
+    - immunity.immunity22
   vars:
     immunity22_firmware_upgrader: true
 ```
@@ -493,7 +493,7 @@ When the playbook is done running, if you got no errors you can login at:
     username: admin
     password: admin
 
-**Note**: You can configure [openwisp-firmware-upgrader specific settings](https://github.com/openwisp/openwisp-firmware-upgrader#settings)
+**Note**: You can configure [immunity-firmware-upgrader specific settings](https://github.com/immunity/immunity-firmware-upgrader#settings)
 using the `immunity22_extra_django_settings` or
 `immunity22_extra_django_settings_instructions`.
 
@@ -503,7 +503,7 @@ E.g:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - openwisp.immunity22
+    - immunity.immunity22
   vars:
     immunity22_firmware_upgrader: true
     immunity22_extra_django_settings_instructions:
@@ -519,7 +519,7 @@ E.g:
 Enabling the RADIUS module
 --------------------------
 
-To enable the [RADIUS module](https://openwisp.io/docs/user/radius.html)
+To enable the [RADIUS module](https://immunity.io/docs/user/radius.html)
 you need to set `immunity22_radius` to `true` in
 your `playbook.yml` file. Here's a short summary of how to do this:
 
@@ -535,18 +535,18 @@ your `playbook.yml` file. Here's a short summary of how to do this:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - openwisp.immunity22
+    - immunity.immunity22
   vars:
     immunity22_radius: true
     immunity22_freeradius_install: true
-    # set to false when you don't want to register openwisp-radius
+    # set to false when you don't want to register immunity-radius
     # API endpoints.
     immunity22_radius_urls: true
 ```
 
 **Note:** `immunity22_freeradius_install` option provides a basic
-configuration of freeradius for openwisp, it sets up the
-[radius user token mechanism](https://openwisp-radius.readthedocs.io/en/latest/user/api.html#radius-user-token-recommended)
+configuration of freeradius for immunity, it sets up the
+[radius user token mechanism](https://immunity-radius.readthedocs.io/en/latest/user/api.html#radius-user-token-recommended)
 if you want to use another mechanism or manage your freeradius separately,
 please disable this option by setting it to `false`.
 
@@ -583,14 +583,14 @@ package. Here's a short summary of how to do this:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - openwisp.immunity22
+    - immunity.immunity22
   vars:
     # Cross-Origin Resource Sharing (CORS) settings
     immunity22_django_cors:
       enabled: true
       allowed_origins_list:
-        - https://frontend.openwisp.org
-        - https://logs.openwisp.org
+        - https://frontend.immunity.org
+        - https://logs.immunity.org
 ```
 
 **Note:** to learn about the supported fields of the `immunity22_django_cors` variable,
@@ -617,13 +617,13 @@ setting of `django-cors-headers` as shown in the following example:
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - openwisp.immunity22
+    - immunity.immunity22
   vars:
     immunity22_django_cors:
       enabled: true
       allowed_origins_list:
-        - https://frontend.openwisp.org
-        - https://logs.openwisp.org
+        - https://frontend.immunity.org
+        - https://logs.immunity.org
       replace_https_referer: true
     # Configuring additional settings for django-cors-headers
     immunity22_extra_django_settings_instructions:
@@ -640,10 +640,10 @@ the static content in `files/ow2_static` directory. The files inside
 `files/ow2_static` will be uploaded to a directory named `static_custom`
 in `immunity22_path`.
 
-This is helpful for [customizing OpenWISP's theme](https://github.com/openwisp/openwisp-utils#openwisp_admin_theme_links).
+This is helpful for [customizing OpenWISP's theme](https://github.com/immunity/immunity-utils#immunity_admin_theme_links).
 
 E.g., if you added a custom CSS file in `files/ow2_static/css/custom.css`, the
-file location to use in [OPENWISP_ADMIN_THEME_LINKS](https://github.com/openwisp/openwisp-utils#openwisp_admin_theme_links) setting will be `css/custom.css`.
+file location to use in [OPENWISP_ADMIN_THEME_LINKS](https://github.com/immunity/immunity-utils#immunity_admin_theme_links) setting will be `css/custom.css`.
 
 Deploying the upcoming release of OpenWISP
 ==========================================
@@ -652,18 +652,18 @@ The following steps will help you set up and install the new version of OpenWISP
 which is not released yet, but ships new features and fixes.
 
 Create a directory for organizing your playbook, roles and collections. In this example,
-`openwisp-dev` is used. Create `roles` and `collections` directories in `~/openwisp-dev`.
+`immunity-dev` is used. Create `roles` and `collections` directories in `~/immunity-dev`.
 
 ```
-mkdir -p ~/openwisp-dev/roles
-mkdir -p ~/openwisp-dev/collections
+mkdir -p ~/immunity-dev/roles
+mkdir -p ~/immunity-dev/collections
 ```
 
-Change directory to `~/openwisp-dev/` in terminal and create configuration
+Change directory to `~/immunity-dev/` in terminal and create configuration
 and requirement files for Ansible.
 
 ```
-cd ~/openwisp-dev/
+cd ~/immunity-dev/
 touch ansible.cfg
 touch requirements.yml
 ```
@@ -672,8 +672,8 @@ Setup `roles_path` and `collections_paths` variables in `ansible.cfg` as follows
 
 ```
 [defaults]
-roles_path=~/openwisp-dev/roles
-collections_paths=~/openwisp-dev/collections
+roles_path=~/immunity-dev/roles
+collections_paths=~/immunity-dev/collections
 ```
 
 Ensure your `requirements.yml` contains following content:
@@ -681,9 +681,9 @@ Ensure your `requirements.yml` contains following content:
 ```yml
 ---
 roles:
-  - src: https://github.com/openwisp/ansible-immunity22.git
+  - src: https://github.com/immunity/ansible-immunity22.git
     version: master
-    name: openwisp.immunity22-dev
+    name: immunity.immunity22-dev
 collections:
   - name: community.general
     version: ">=3.6.0"
@@ -712,7 +712,7 @@ for installing a fully-featured version of OpenWISP.
 - hosts: immunity22
   become: "{{ become | default('yes') }}"
   roles:
-    - openwisp.immunity22-dev
+    - immunity.immunity22-dev
   vars:
     immunity22_network_topology: true
     immunity22_firmware_upgrader: true
@@ -785,7 +785,7 @@ variables accordingly or by following the instructions explained in the section
 ["Automatic SSL certificate"](#automatic-ssl-certificate).
 
 If you keep the untrusted certificate, you will also need to disable SSL verification on devices
-using [openwisp-config](https://github.com/openwisp/openwisp-config) by setting `verify_ssl` to `0`,
+using [immunity-config](https://github.com/immunity/immunity-config) by setting `verify_ssl` to `0`,
 although I advice against using this kind of setup in a production environment.
 
 Automatic SSL certificate
@@ -819,7 +819,7 @@ Then proceed to edit your `playbook.yml` so that it will look similar to the fol
   become: "{{ become | default('yes') }}"
   roles:
     - geerlingguy.certbot
-    - openwisp.immunity22
+    - immunity.immunity22
   vars:
     # SSL certificates
     immunity22_ssl_cert: "/etc/letsencrypt/live/{{ inventory_hostname }}/fullchain.pem"
@@ -858,7 +858,7 @@ before upgrading**.
 
 Update this ansible-role via `ansible-galaxy`:
 
-    ansible-galaxy install --force openwisp.immunity22
+    ansible-galaxy install --force immunity.immunity22
 
 Run `ansible-playbook` again **from your local machine**:
 
@@ -874,13 +874,13 @@ This role has many variables values that can be changed to best suit
 your needs.
 
 Below are listed all the variables you can customize (you may also want to take a look at
-[the default values of these variables](https://github.com/openwisp/ansible-immunity22/blob/master/defaults/main.yml)).
+[the default values of these variables](https://github.com/immunity/ansible-immunity22/blob/master/defaults/main.yml)).
 
 ```yaml
 - hosts: yourhost
   roles:
   # you can add other roles here
-    - openwisp.immunity22
+    - immunity.immunity22
   vars:
     # Enable the modules you want to use
     immunity22_network_topology: false
@@ -892,15 +892,15 @@ Below are listed all the variables you can customize (you may also want to take 
     # WARNING: only do this if you know what you are doing; disruption
     # of service is very likely to occur if these variables are changed
     # without careful analysis and testing
-    immunity22_controller_version: "openwisp-controller~=1.0.0"
-    immunity22_network_topology_version: "openwisp-network-topology~=1.0.0"
-    immunity22_firmware_upgrader_version: "openwisp-firmware-upgrader~=1.0.0"
-    immunity22_monitoring_version: "openwisp-monitoring~=1.0.0"
-    immunity22_radius_version: "openwisp-radius~=1.0.0"
+    immunity22_controller_version: "immunity-controller~=1.0.0"
+    immunity22_network_topology_version: "immunity-network-topology~=1.0.0"
+    immunity22_firmware_upgrader_version: "immunity-firmware-upgrader~=1.0.0"
+    immunity22_monitoring_version: "immunity-monitoring~=1.0.0"
+    immunity22_radius_version: "immunity-radius~=1.0.0"
     immunity22_django_version: "django~=3.2.13"
     # Setting this to true will enable subnet division feature of
-    # openwisp-controller. Refer openwisp-controller documentation
-    # for more information. https://github.com/openwisp/openwisp-controller#subnet-division-app
+    # immunity-controller. Refer immunity-controller documentation
+    # for more information. https://github.com/immunity/immunity-controller#subnet-division-app
     # By default, it is set to false.
     immunity22_controller_subnet_division: true
     # when immunity22_radius_urls is set to false, the radius module
@@ -939,11 +939,11 @@ Below are listed all the variables you can customize (you may also want to take 
     # customize other django settings:
     immunity22_language_code: en-gb
     immunity22_time_zone: UTC
-    # openwisp-controller context
+    # immunity-controller context
     immunity22_context: {}
     # additional allowed hosts
     immunity22_allowed_hosts:
-        - myadditionalhost.openwisp.org
+        - myadditionalhost.immunity.org
     # geographic map settings
     immunity22_leaflet_config:
         DEFAULT_CENTER: [42.06775, 12.62011]
@@ -994,7 +994,7 @@ Below are listed all the variables you can customize (you may also want to take 
     # but can be disabled in multi-VM installations if needed
     immunity22_controller_urls: true
     # The default retention policy that applies to the timeseries data
-    # https://github.com/openwisp/openwisp-monitoring#openwisp-monitoring-default-retention-policy
+    # https://github.com/immunity/immunity-monitoring#immunity-monitoring-default-retention-policy
     immunity22_monitoring_default_retention_policy: "26280h0m0s" # 3 years
     # whether NGINX should be installed
     immunity22_nginx_install: true
@@ -1007,7 +1007,7 @@ Below are listed all the variables you can customize (you may also want to take 
     # nginx client_max_body_size setting
     immunity22_nginx_client_max_body_size: 10M
     # list of upstream servers for OpenWISP
-    immunity22_nginx_openwisp_server:
+    immunity22_nginx_immunity_server:
       - "localhost:8000"
     # dictionary containing more nginx settings for
     # the 443 section of the immunity22 nginx configuration
@@ -1077,7 +1077,7 @@ Below are listed all the variables you can customize (you may also want to take 
           when: my_custom_service_enabled
     # Disable usage metric collection. It is enabled by default.
     # Read more about it at
-    # https://openwisp.io/docs/user/usage-metric-collection.html
+    # https://immunity.io/docs/user/usage-metric-collection.html
     immunity22_usage_metric_collection: false
     # enable sentry example
     immunity22_sentry:
@@ -1089,12 +1089,12 @@ Below are listed all the variables you can customize (you may also want to take 
     immunity22_redis_host: localhost
     immunity22_redis_port: 6379
     immunity22_redis_cache_url: "redis://{{ immunity22_redis_host }}:{{ immunity22_redis_port }}/1"
-    # the following options are required to configure influxdb which is used in openwisp-monitoring
+    # the following options are required to configure influxdb which is used in immunity-monitoring
     immunity22_influxdb_install: true
     immunity22_timeseries_database:
-        backend: "openwisp_monitoring.db.backends.influxdb"
-        user: "openwisp"
-        password: "openwisp"
+        backend: "immunity_monitoring.db.backends.influxdb"
+        user: "immunity"
+        password: "immunity"
         name: "immunity22"
         host: "localhost"
         port: 8086
@@ -1206,10 +1206,10 @@ Below are listed all the variables you can customize (you may also want to take 
     immunity22_internationalization: true
     immunity22_users_auth_api: true
     # Allows setting OPENWISP_USERS_USER_PASSWORD_EXPIRATION setting.
-    # Read https://github.com/openwisp/openwisp-users#openwisp_users_user_password_expiration
+    # Read https://github.com/immunity/immunity-users#immunity_users_user_password_expiration
     immunity22_users_user_password_expiration: 30
       # Allows setting OPENWISP_USERS_STAFF_USER_PASSWORD_EXPIRATION setting.
-    # Read https://github.com/openwisp/openwisp-users#openwisp_users_staff_user_password_expiration
+    # Read https://github.com/immunity/immunity-users#immunity_users_staff_user_password_expiration
     immunity22_users_staff_user_password_expiration: 30
     # used for SMS verification, the default is a dummy SMS backend
     # which prints to standard output and hence does nothing
@@ -1227,10 +1227,10 @@ Below are listed all the variables you can customize (you may also want to take 
     # to the privacy regulation of your jurisdiction
     immunity22_radius_delete_old_radacct: 365
     # days after which inactive users will flagged as unverified
-    # Read https://openwisp-radius.readthedocs.io/en/latest/user/settings.html#openwisp-radius-unverify-inactive-users
+    # Read https://immunity-radius.readthedocs.io/en/latest/user/settings.html#immunity-radius-unverify-inactive-users
     immunity22_radius_unverify_inactive_users: 540
     # days after which inactive users will be deleted
-    # Read https://openwisp-radius.readthedocs.io/en/latest/user/settings.html#openwisp-radius-delete-inactive-users
+    # Read https://immunity-radius.readthedocs.io/en/latest/user/settings.html#immunity-radius-delete-inactive-users
     immunity22_radius_delete_inactive_users: 540
     immunity22_radius_allowed_hosts: ["127.0.0.1"]
     # allow disabling celery beat tasks if needed
@@ -1253,11 +1253,11 @@ Below are listed all the variables you can customize (you may also want to take 
         url: "https://{{ inventory_hostname }}/api/v1/freeradius"
     freeradius_safe_characters: "+@abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_: /"
     # Sets the source path of the template that contains freeradius site configuration.
-    # Defaults to "templates/freeradius/openwisp_site.j2" shipped in the role.
-    freeradius_openwisp_site_template_src: custom_freeradius_site.j2
-    # FreeRADIUS listen address for the openwisp_site.
+    # Defaults to "templates/freeradius/immunity_site.j2" shipped in the role.
+    freeradius_immunity_site_template_src: custom_freeradius_site.j2
+    # FreeRADIUS listen address for the immunity_site.
     # Defaults to "*", i.e. listen on all interfaces.
-    freeradius_openwisp_site_listen_ipaddr: "10.8.0.1"
+    freeradius_immunity_site_listen_ipaddr: "10.8.0.1"
     cron_delete_old_notifications: "'hour': 0, 'minute': 0"
     cron_deactivate_expired_users: "'hour': 0, 'minute': 5"
     cron_delete_old_radiusbatch_users: "'hour': 0, 'minute': 10"
@@ -1278,7 +1278,7 @@ Below are listed all the variables you can customize (you may also want to take 
       # package. A list of origins that are authorized to make cross-site
       # HTTP requests. Read https://github.com/adamchainz/django-cors-headers#cors_allowed_origins-sequencestr
       # for detail. By default, it is set to an empty list.
-      allowed_origins_list: ["https://log.openwisp.org"]
+      allowed_origins_list: ["https://log.immunity.org"]
       # Configures "CORS_REPLACE_HTTPS_REFERER" setting of the django-cors-headers
       # package. Read https://github.com/adamchainz/django-cors-headers#cors_replace_https_referer-bool
       # for detail. Setting this to "true" will also configure the
@@ -1295,4 +1295,4 @@ for celery workers.
 Support
 =======
 
-See [OpenWISP Support Channels](http://openwisp.org/support.html).
+See [OpenWISP Support Channels](http://immunity.org/support.html).

@@ -38,19 +38,19 @@ jobs:
       - name: Install python dependencies
         run: |
           pip install molecule molecule-plugins[docker] yamllint ansible-lint docker
-          pip install openwisp-utils[qa]
+          pip install immunity-utils[qa]
 
       - name: Install Ansible Galaxy dependencies
         run: ansible-galaxy collection install "community.general:>=3.6.0"
 
       - name: QA checks
         run: |
-          openwisp-qa-check --skip-isort --skip-flake8 --skip-checkmigrations --skip-black
+          immunity-qa-check --skip-isort --skip-flake8 --skip-checkmigrations --skip-black
 
       - name: Tests
         run: |
           mkdir -p ~/.ansible/roles
-          ln -s $GITHUB_WORKSPACE ~/.ansible/roles/openwisp.immunity22
+          ln -s $GITHUB_WORKSPACE ~/.ansible/roles/immunity.immunity22
           molecule test
         env:
           ROLE_NAME: immunity22
@@ -73,4 +73,4 @@ jobs:
 
       - name: Update imports on Ansible Galaxy
         run: |
-          ansible-galaxy role import --api-key ${{ secrets.GALAXY_API_KEY }} openwisp ansible-immunity22
+          ansible-galaxy role import --api-key ${{ secrets.GALAXY_API_KEY }} immunity ansible-immunity22

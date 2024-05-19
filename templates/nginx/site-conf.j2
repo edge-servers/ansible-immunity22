@@ -2,8 +2,8 @@ upstream channels-backend {
     server unix://{{ immunity22_path }}/daphne0.sock fail_timeout=0;
 }
 
-upstream openwisp-server {
-    {% for server in immunity22_nginx_openwisp_server %}
+upstream immunity-server {
+    {% for server in immunity22_nginx_immunity_server %}
     server {{ server }};
     {% endfor %}
 }
@@ -37,7 +37,7 @@ server {
     {% endfor %}
 
     location @uwsgi {
-        uwsgi_pass openwisp-server;
+        uwsgi_pass immunity-server;
         include uwsgi_params;
         uwsgi_param HTTP_X_FORWARDED_PROTO https;
     }
@@ -95,7 +95,7 @@ server {
 
     {% if immunity22_http_allowed_ip %}
     location @uwsgi {
-        uwsgi_pass openwisp-server;
+        uwsgi_pass immunity-server;
         include uwsgi_params;
         uwsgi_param HTTP_X_FORWARDED_PROTO http;
     }

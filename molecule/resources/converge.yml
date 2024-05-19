@@ -26,4 +26,4 @@
         state: absent
 
   roles:
-    - role: openwisp.immunity22
+    - role: immunity.immunity22

@@ -4,6 +4,6 @@
   version: origin/develop
   name: Stouts.postfix
 
-- src: https://github.com/openwisp/ansible-ow-influxdb
+- src: https://github.com/immunity/ansible-ow-influxdb
   version: origin/master
-  name: openwisp.influxdb
+  name: immunity.influxdb

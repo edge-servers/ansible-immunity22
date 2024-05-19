@@ -96,7 +96,7 @@
   tags:
     - molecule-idempotence-notest
 
-- name: Install openwisp firmware upgrader and its dependencies
+- name: Install immunity firmware upgrader and its dependencies
   when: immunity22_firmware_upgrader
   pip:
     name: "{{ immunity22_firmware_upgrader_version }}"
@@ -113,7 +113,7 @@
   tags:
     - molecule-idempotence-notest
 
-- name: Install openwisp monitoring and its dependencies
+- name: Install immunity monitoring and its dependencies
   when: immunity22_monitoring
   pip:
     name: "{{ immunity22_monitoring_version }}"

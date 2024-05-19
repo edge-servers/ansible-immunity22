@@ -1,6 +1,6 @@
 ---
 - name: Add freeradius repository into Ubuntu jammy sources list
-  # NOTE: The older version of openwisp.immunity22 used to install
+  # NOTE: The older version of immunity.immunity22 used to install
   # FreeRADIUS 3.0.x on Ubuntu 22.04. After the release of
   # Ubuntu 22.04.1, FreeRADIUS 3.0.x can no longer be installed.
   # This block contains tasks that configures FreeRADIUS server
@@ -185,8 +185,8 @@
 
 - name: Site configuration
   template:
-    src: "{{ freeradius_openwisp_site_template_src }}"
-    dest: "{{ freeradius_sites_enabled_dir }}/openwisp_site"
+    src: "{{ freeradius_immunity_site_template_src }}"
+    dest: "{{ freeradius_sites_enabled_dir }}/immunity_site"
     mode: 0640
     owner: freerad
     group: freerad

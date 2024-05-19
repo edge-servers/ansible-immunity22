@@ -9,12 +9,12 @@ from channels.security.websocket import AllowedHostsOriginValidator
 routes = []
 
 {% if immunity22_controller_urls %}
-from openwisp_controller.routing import get_routes as get_controller_routes
+from immunity_controller.routing import get_routes as get_controller_routes
 routes.extend(get_controller_routes())
 {% endif %}
 
 {% if immunity22_network_topology %}
-from openwisp_network_topology.routing import websocket_urlpatterns as network_topology_routes
+from immunity_network_topology.routing import websocket_urlpatterns as network_topology_routes
 routes.extend(network_topology_routes)
 {% endif %}
 
