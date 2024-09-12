@@ -18,11 +18,11 @@ repositories of the ansible roles and create directory roles.
     mkdir -p ~/openwisp-dev/roles
     cd ~/openwisp-dev/roles
 
-Clone ``ansible-openwisp2`` and ``Stouts.postfix`` as follows:
+Clone ``ansible-immunity22`` and ``Stouts.postfix`` as follows:
 
 .. code-block:: bash
 
-    git clone https://github.com/openwisp/ansible-openwisp2.git openwisp.openwisp2
+    git clone https://github.com/openwisp/ansible-immunity22.git openwisp.immunity22
     git clone https://github.com/Stouts/Stouts.postfix
     git clone https://github.com/openwisp/ansible-ow-influxdb openwisp.influxdb
 
@@ -47,20 +47,20 @@ All done!
 How to Run Tests
 ----------------
 
-If you want to contribute to ``ansible-openwisp2`` you should run tests in
+If you want to contribute to ``ansible-immunity22`` you should run tests in
 your development environment to ensure your changes are not breaking
 anything.
 
 To do that, proceed with the following steps:
 
-**Step 1**: Clone ``ansible-openwisp2``
+**Step 1**: Clone ``ansible-immunity22``
 
 Clone repository by:
 
 .. code-block:: shell
 
-    git clone https://github.com/<your_fork>/ansible-openwisp2.git openwisp.openwisp2
-    cd openwisp.openwisp2
+    git clone https://github.com/<your_fork>/ansible-immunity22.git openwisp.immunity22
+    cd openwisp.immunity22
 
 **Step 2**: Install docker
 

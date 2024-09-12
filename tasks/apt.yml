@@ -39,14 +39,14 @@
 - name: Install nginx
   apt:
     name: nginx
-  when: openwisp2_nginx_install
+  when: immunity22_nginx_install
 
 - name: Install redis
   apt:
     name: redis-server
   notify:
     - Start redis
-  when: openwisp2_redis_install
+  when: immunity22_redis_install
 
 # On the newer versions of redis, by default redis
 # binds to localhost on ipv6 address which wouldn't
@@ -54,7 +54,7 @@
 # ipv6 enabled. Hence, we set redis to listen on ipv4
 - name: Set redis to listen on ipv4
   notify: Start redis
-  when: openwisp2_redis_install
+  when: immunity22_redis_install
   lineinfile:
     path: /etc/redis/redis.conf
     regexp: '^bind 127\.0\.0\.1 ::1'
@@ -63,7 +63,7 @@
   ignore_errors: true
 
 - name: Start redis
-  when: openwisp2_redis_install
+  when: immunity22_redis_install
   service:
     name: redis
     state: started
@@ -80,7 +80,7 @@
   until: result is success
 
 - name: Install spatialite
-  when: '"spatialite" in openwisp2_database.engine'
+  when: '"spatialite" in immunity22_database.engine'
   apt:
     name:
       - sqlite3
@@ -91,7 +91,7 @@
   until: result is success
 
 - name: Install postgresql client drivers
-  when: openwisp2_database.engine == "django.contrib.gis.db.backends.postgis"
+  when: immunity22_database.engine == "django.contrib.gis.db.backends.postgis"
   apt:
     name: libpq-dev
   retries: 5
@@ -100,7 +100,7 @@
   until: result is success
 
 - name: Install cairo
-  when: openwisp2_radius
+  when: immunity22_radius
   apt:
     name:
       - libcairo2
@@ -108,10 +108,10 @@
       - libpangocairo-1.0-0
       - libgdk-pixbuf2.0-0
       - shared-mime-info
-  tags: [openwisp2, radius]
+  tags: [immunity22, radius]
 
 - name: Install mod-spatialite (may fail on older linux distros)
-  when: '"spatialite" in openwisp2_database.engine'
+  when: '"spatialite" in immunity22_database.engine'
   apt: name=libsqlite3-mod-spatialite
   ignore_errors: true
   retries: 5
@@ -144,7 +144,7 @@
   until: result is success
 
 - name: Install ntp
-  when: openwisp2_install_ntp
+  when: immunity22_install_ntp
   apt: name=ntp
   retries: 5
   delay: 10
@@ -154,14 +154,14 @@
 - name: Install gettext
   apt:
     name: gettext
-  when: openwisp2_internationalization
+  when: immunity22_internationalization
   retries: 5
   delay: 10
   register: result
   until: result is success
 
 - name: Install fping
-  when: openwisp2_monitoring
+  when: immunity22_monitoring
   apt:
     name:
       - fping

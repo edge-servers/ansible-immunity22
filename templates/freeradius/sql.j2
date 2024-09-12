@@ -2,15 +2,15 @@ sql {
     driver = "{{ freeradius_sql.driver }}"
     dialect = "{{ freeradius_sql.dialect }}"
 {% if freeradius_sql.dialect in ['postgresql', 'mysql'] %}
-    radius_db = "{{ openwisp2_database.name }}"
-    server = "{{ openwisp2_database.host }}"
-    port = "{{ openwisp2_database.port }}"
-    login = "{{ openwisp2_database.user }}"
-    password = "{{ openwisp2_database.password }}"
+    radius_db = "{{ immunity22_database.name }}"
+    server = "{{ immunity22_database.host }}"
+    port = "{{ immunity22_database.port }}"
+    login = "{{ immunity22_database.user }}"
+    password = "{{ immunity22_database.password }}"
 
 {% elif freeradius_sql.dialect == 'sqlite' %}
     sqlite {
-        filename = "{{ openwisp2_database.name }}"
+        filename = "{{ immunity22_database.name }}"
     }
 
 {% endif %}

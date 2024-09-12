@@ -9,7 +9,7 @@ Enabling the Monitoring Module
 ------------------------------
 
 The :doc:`Monitoring module </monitoring/index>` is enabled by default, it
-can be disabled by setting ``openwisp2_monitoring`` to ``false``.
+can be disabled by setting ``immunity22_monitoring`` to ``false``.
 
 Enabling the Firmware Upgrader Module
 -------------------------------------
@@ -19,7 +19,7 @@ openwisp-firmware-upgrader </firmware-upgrader/user/quickstart>` before
 going ahead.
 
 To enable the :doc:`Firmware Upgrader </firmware-upgrader/index>` module
-you need to set ``openwisp2_firmware_upgrader`` to ``true`` in your
+you need to set ``immunity22_firmware_upgrader`` to ``true`` in your
 ``playbook.yml`` file. Here's a short summary of how to do this:
 
 **Step 1**: :ref:`Install ansible <ansible_install>`
@@ -32,17 +32,17 @@ you need to set ``openwisp2_firmware_upgrader`` to ``true`` in your
 
 .. code-block:: yaml
 
-    - hosts: openwisp2
+    - hosts: immunity22
       become: "{{ become | default('yes') }}"
       roles:
-        - openwisp.openwisp2
+        - openwisp.immunity22
       vars:
-        openwisp2_firmware_upgrader: true
+        immunity22_firmware_upgrader: true
 
 **Step 5**: :ref:`Run the playbook <ansible_run_playbook>`
 
 When the playbook is done running, if you got no errors you can login at
-https://openwisp2.mydomain.com/admin with the following credentials:
+https://immunity22.mydomain.com/admin with the following credentials:
 
 .. code-block:: text
 
@@ -51,20 +51,20 @@ https://openwisp2.mydomain.com/admin with the following credentials:
 
 You can configure :doc:`openwisp-firmware-upgrader specific settings
 </firmware-upgrader/user/settings>` using the
-``openwisp2_extra_django_settings`` or
-``openwisp2_extra_django_settings_instructions``.
+``immunity22_extra_django_settings`` or
+``immunity22_extra_django_settings_instructions``.
 
 E.g:
 
 .. code-block:: yaml
 
-    - hosts: openwisp2
+    - hosts: immunity22
       become: "{{ become | default('yes') }}"
       roles:
-        - openwisp.openwisp2
+        - openwisp.immunity22
       vars:
-        openwisp2_firmware_upgrader: true
-        openwisp2_extra_django_settings_instructions:
+        immunity22_firmware_upgrader: true
+        immunity22_extra_django_settings_instructions:
           - |
             OPENWISP_CUSTOM_OPENWRT_IMAGES = (
                 ('my-custom-image-squashfs-sysupgrade.bin', {
@@ -80,7 +80,7 @@ Enabling the Network Topology Module
 ------------------------------------
 
 To enable the :doc:`Network Topology module </network-topology/index>` you
-need to set ``openwisp2_network_topology`` to ``true`` in your
+need to set ``immunity22_network_topology`` to ``true`` in your
 ``playbook.yml`` file. Here's a short summary of how to do this:
 
 **Step 1**: :ref:`Install ansible <ansible_install>`
@@ -93,17 +93,17 @@ need to set ``openwisp2_network_topology`` to ``true`` in your
 
 .. code-block:: yaml
 
-    - hosts: openwisp2
+    - hosts: immunity22
       become: "{{ become | default('yes') }}"
       roles:
-        - openwisp.openwisp2
+        - openwisp.immunity22
       vars:
-        openwisp2_network_topology: true
+        immunity22_network_topology: true
 
 **Step 5**: :ref:`Run the playbook <ansible_run_playbook>`
 
 When the playbook is done running, if you got no errors you can login at
-https://openwisp2.mydomain.com/admin with the following credentials:
+https://immunity22.mydomain.com/admin with the following credentials:
 
 .. code-block:: text
 
@@ -116,7 +116,7 @@ Enabling the RADIUS Module
 --------------------------
 
 To enable the :doc:`RADIUS module </radius/index>` you need to set
-``openwisp2_radius`` to ``true`` in your ``playbook.yml`` file. Here's a
+``immunity22_radius`` to ``true`` in your ``playbook.yml`` file. Here's a
 short summary of how to do this:
 
 **Step 1**: :ref:`Install ansible <ansible_install>`
@@ -129,20 +129,20 @@ short summary of how to do this:
 
 .. code-block:: yaml
 
-    - hosts: openwisp2
+    - hosts: immunity22
       become: "{{ become | default('yes') }}"
       roles:
-        - openwisp.openwisp2
+        - openwisp.immunity22
       vars:
-        openwisp2_radius: true
-        openwisp2_freeradius_install: true
+        immunity22_radius: true
+        immunity22_freeradius_install: true
         # set to false when you don't want to register openwisp-radius
         # API endpoints.
-        openwisp2_radius_urls: true
+        immunity22_radius_urls: true
 
 .. note::
 
-    ``openwisp2_freeradius_install`` option provides a basic configuration
+    ``immunity22_freeradius_install`` option provides a basic configuration
     of freeradius for OpenIWSP, it sets up the :ref:`radius user token
     mechanism <radius_user_token>` if you want to use another mechanism or
     manage your freeradius separately, please disable this option by
@@ -154,7 +154,7 @@ When the playbook is done running, if you got no errors you can login at:
 
 .. code-block::
 
-    https://openwisp2.mydomain.com/admin
+    https://immunity22.mydomain.com/admin
     username: admin
     password: admin
 

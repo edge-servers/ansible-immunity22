@@ -70,7 +70,7 @@ installing ansible), therefore run:
 
 .. code-block:: shell
 
-    ansible-galaxy install openwisp.openwisp2
+    ansible-galaxy install openwisp.immunity22
 
 Ensure that you have the `community.general
 <https://docs.ansible.com/ansible/latest/collections/community/general/index.html>`_
@@ -97,8 +97,8 @@ E.g.:
 
 .. code-block:: shell
 
-    mkdir ~/openwisp2-ansible-playbook
-    cd ~/openwisp2-ansible-playbook
+    mkdir ~/immunity22-ansible-playbook
+    cd ~/immunity22-ansible-playbook
 
 .. _ansible_create_inventory_file:
 
@@ -114,11 +114,11 @@ the following contents:
 
 .. code-block:: text
 
-    [openwisp2]
-    openwisp2.mydomain.com
+    [immunity22]
+    immunity22.mydomain.com
 
-Substitute ``openwisp2.mydomain.com`` with your **production server**'s
-hostname - **DO NOT REPLACE openwisp2.mydomain.com WITH AN IP ADDRESS**,
+Substitute ``immunity22.mydomain.com`` with your **production server**'s
+hostname - **DO NOT REPLACE immunity22.mydomain.com WITH AN IP ADDRESS**,
 otherwise email sending through postfix will break, causing 500 internal
 server errors on some operations.
 
@@ -132,22 +132,22 @@ the following contents:
 
 .. code-block:: yaml
 
-    - hosts: openwisp2
+    - hosts: immunity22
       become: "{{ become | default('yes') }}"
       roles:
-        - openwisp.openwisp2
+        - openwisp.immunity22
       vars:
-        openwisp2_default_from_email: "openwisp2@openwisp2.mydomain.com"
+        immunity22_default_from_email: "immunity22@immunity22.mydomain.com"
 
 The line ``become: "{{ become | default('yes') }}"`` means ansible will
 use the ``sudo`` program to run each command. You may remove this line if
 you don't need it (e.g.: if you are ``root`` user on the production
 server).
 
-You may replace ``openwisp2`` on the ``hosts`` field with your production
+You may replace ``immunity22`` on the ``hosts`` field with your production
 server's hostname if you desire.
 
-Substitute ``openwisp2@openwisp2.mydomain.com`` with what you deem most
+Substitute ``immunity22@immunity22.mydomain.com`` with what you deem most
 appropriate as default sender for emails sent by OpenWISP 2.
 
 .. _ansible_run_playbook:
@@ -181,14 +181,14 @@ installed on the server.
       again.
 
 When the playbook is done running, if you got no errors you can login at
-``https://openwisp2.mydomain.com/admin`` with the following credentials:
+``https://immunity22.mydomain.com/admin`` with the following credentials:
 
 .. code-block:: text
 
     username: admin
     password: admin
 
-Substitute ``openwisp2.mydomain.com`` with your production server's
+Substitute ``immunity22.mydomain.com`` with your production server's
 hostname.
 
 Now proceed with the following steps:
@@ -223,7 +223,7 @@ Update this ansible-role via ``ansible-galaxy``:
 
 .. code-block:: shell
 
-    ansible-galaxy install --force openwisp.openwisp2
+    ansible-galaxy install --force openwisp.immunity22
 
 Run ``ansible-playbook`` again **from your local machine**:
 
@@ -277,9 +277,9 @@ Ensure your ``requirements.yml`` contains following content:
 
     ---
     roles:
-      - src: https://github.com/openwisp/ansible-openwisp2.git
+      - src: https://github.com/openwisp/ansible-immunity22.git
         version: master
-        name: openwisp.openwisp2-dev
+        name: openwisp.immunity22-dev
     collections:
       - name: community.general
         version: ">=3.6.0"
@@ -305,15 +305,15 @@ installing a fully-featured version of OpenWISP.
 
 .. code-block:: yaml
 
-    - hosts: openwisp2
+    - hosts: immunity22
       become: "{{ become | default('yes') }}"
       roles:
-        - openwisp.openwisp2-dev
+        - openwisp.immunity22-dev
       vars:
-        openwisp2_network_topology: true
-        openwisp2_firmware_upgrader: true
-        openwisp2_radius: true
-        openwisp2_monitoring: true # monitoring is enabled by default
+        immunity22_network_topology: true
+        immunity22_firmware_upgrader: true
+        immunity22_radius: true
+        immunity22_monitoring: true # monitoring is enabled by default
 
 Read :doc:`role-variables` section to learn about available configuration
 variables.

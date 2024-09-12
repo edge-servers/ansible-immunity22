@@ -16,13 +16,13 @@ for testing purposes** leveraging `Vagrant <https://www.vagrantup.com>`__,
 a popular open source tool for building and maintaining portable virtual
 software development environments.
 
-To use this new way, clone the repository `vagrant-openwisp2
-<https://github.com/openwisp/vagrant-openwisp2>`__, it contains the
+To use this new way, clone the repository `vagrant-immunity22
+<https://github.com/openwisp/vagrant-immunity22>`__, it contains the
 instructions (in the ``README.md``) and the vagrant configuration to
 perform the automatic installation.
 
 Alternatively, you can read on to learn how to install *VirtualBox* and
-run *ansible-openwisp2* manually, this is useful if you need to test
+run *ansible-immunity22* manually, this is useful if you need to test
 advanced customizations of *OpenWISP*.
 
 Installing Debian 11 on VirtualBox
@@ -111,7 +111,7 @@ directory** (i.e. not in the VM) with the following contents:
 
 .. code-block::
 
-    [openwisp2]
+    [immunity22]
     192.168.56.2
 
 **Step 5**: Create the ansible playbook
@@ -121,9 +121,9 @@ named ``playbook.yml`` which contains the following:
 
 .. code-block:: yaml
 
-    - hosts: openwisp2
+    - hosts: immunity22
       roles:
-        - openwisp.openwisp2
+        - openwisp.immunity22
       # the following line is needed only when an IP address is used as the inventory hostname
       vars:
           postfix_myhostname: localhost

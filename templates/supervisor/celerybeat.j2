@@ -1,11 +1,11 @@
 [program:celerybeat]
 user={{ www_user }}
-directory={{ openwisp2_path }}
-command={{ openwisp2_path }}/env/bin/celery -A openwisp2 beat -l info --schedule {{ openwisp2_path }}/celerybeat-schedule.db
+directory={{ immunity22_path }}
+command={{ immunity22_path }}/env/bin/celery -A immunity22 beat -l info --schedule {{ immunity22_path }}/celerybeat-schedule.db
 autostart=true
 autorestart=true
 stopsignal=INT
 redirect_stderr=true
-stdout_logfile={{ openwisp2_path }}/log/celerybeat.log
+stdout_logfile={{ immunity22_path }}/log/celerybeat.log
 stdout_logfile_maxbytes=30MB
 stdout_logfile_backups=5

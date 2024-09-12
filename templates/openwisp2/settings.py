@@ -10,14 +10,14 @@ TESTING = 'test' in sys.argv
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '{{ openwisp2_secret_key }}'
+SECRET_KEY = '{{ immunity22_secret_key }}'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = [
     '{{ inventory_hostname }}',
-{% for host in openwisp2_allowed_hosts %}
+{% for host in immunity22_allowed_hosts %}
     '{{ host }}',
 {% endfor %}
 ]
@@ -41,16 +41,16 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_extensions',
-    # openwisp2 modules
+    # immunity22 modules
     'openwisp_users',
     'openwisp_controller.pki',
     'openwisp_controller.config',
     'openwisp_controller.geo',
     'openwisp_controller.connection',
-{% if openwisp2_controller_subnet_division %}
+{% if immunity22_controller_subnet_division %}
     'openwisp_controller.subnet_division',
 {% endif %}
-{% if openwisp2_monitoring %}
+{% if immunity22_monitoring %}
     'openwisp_monitoring.monitoring',
     'openwisp_monitoring.device',
     'openwisp_monitoring.check',
@@ -58,22 +58,22 @@ INSTALLED_APPS = [
 {% endif %}
     'openwisp_notifications',
     'flat_json_widget',
-{% if openwisp2_network_topology %}
+{% if immunity22_network_topology %}
     'openwisp_network_topology',
 {% endif %}
-{% if openwisp2_firmware_upgrader %}
+{% if immunity22_firmware_upgrader %}
     'openwisp_firmware_upgrader',
 {% endif %}
     'openwisp_ipam',
-{% if openwisp2_radius %}
+{% if immunity22_radius %}
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'openwisp_radius',
 {% endif %}
-    # openwisp2 admin theme
+    # immunity22 admin theme
     # (must be loaded here)
     'openwisp_utils.admin_theme',
-    {% if openwisp2_usage_metric_collection is not false %}
+    {% if immunity22_usage_metric_collection is not false %}
     'openwisp_utils.metric_collection',
     {% endif %}
     'admin_auto_filters',
@@ -88,20 +88,20 @@ INSTALLED_APPS = [
     'rest_framework_gis',
     'rest_framework.authtoken',
     'django_filters',
-{% if openwisp2_firmware_upgrader or openwisp2_radius %}
+{% if immunity22_firmware_upgrader or immunity22_radius %}
     'private_storage',
 {% endif %}
     'drf_yasg',
     'channels',
     'pipeline',
     'import_export',
-{% for app in openwisp2_extra_django_apps %}
+{% for app in immunity22_extra_django_apps %}
     '{{ app }}',
 {% endfor %}
-{% if openwisp2_sentry.get('dsn') %}
+{% if immunity22_sentry.get('dsn') %}
     'raven.contrib.django.raven_compat',
 {% endif %}
-{% if openwisp2_email_backend == "djcelery_email.backends.CeleryEmailBackend"%}
+{% if immunity22_email_backend == "djcelery_email.backends.CeleryEmailBackend"%}
     'djcelery_email',
 {% endif %}
 ]
@@ -111,12 +111,12 @@ EXTENDED_APPS = [
     'django_loci',
 ]
 
-{% if openwisp2_firmware_upgrader or openwisp2_radius %}
+{% if immunity22_firmware_upgrader or immunity22_radius %}
 PRIVATE_STORAGE_ROOT = os.path.join(BASE_DIR, 'private')
 {% endif %}
 
-{% if openwisp2_firmware_upgrader %}
-OPENWISP_FIRMWARE_UPGRADER_MAX_FILE_SIZE = {{ openwisp2_firmware_upgrader_max_file_size }}
+{% if immunity22_firmware_upgrader %}
+OPENWISP_FIRMWARE_UPGRADER_MAX_FILE_SIZE = {{ immunity22_firmware_upgrader_max_file_size }}
 {% endif %}
 
 AUTH_USER_MODEL = 'openwisp_users.User'
@@ -135,19 +135,19 @@ STATICFILES_FINDERS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    {% if openwisp2_internationalization %}
+    {% if immunity22_internationalization %}
     'django.middleware.locale.LocaleMiddleware',
     {% endif %}
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    {% if openwisp2_radius %}
+    {% if immunity22_radius %}
     'sesame.middleware.AuthenticationMiddleware',
     {% endif %}
     'django.contrib.messages.middleware.MessageMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    {% if openwisp2_users_user_password_expiration or openwisp2_users_staff_user_password_expiration %}
+    {% if immunity22_users_user_password_expiration or immunity22_users_staff_user_password_expiration %}
     'openwisp_users.middleware.PasswordExpirationMiddleware',
     {% endif %}
     'pipeline.middleware.MinifyHTMLMiddleware'
@@ -157,8 +157,8 @@ AUTHENTICATION_BACKENDS = [
     'openwisp_users.backends.UsersAuthenticationBackend',
 ]
 
-{% if openwisp2_radius %}
-OPENWISP_RADIUS_FREERADIUS_ALLOWED_HOSTS = {{ openwisp2_radius_allowed_hosts }}
+{% if immunity22_radius %}
+OPENWISP_RADIUS_FREERADIUS_ALLOWED_HOSTS = {{ immunity22_radius_allowed_hosts }}
 REST_AUTH = {
     'SESSION_LOGIN': False,
     'PASSWORD_RESET_SERIALIZER': 'openwisp_radius.api.serializers.PasswordResetSerializer',
@@ -178,30 +178,30 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 # Backward compatible settings ends
 
 # SMS settings
-OPENWISP_RADIUS_SMS_TOKEN_MAX_IP_DAILY = {{ openwisp2_radius_sms_token_max_ip_daily }}
-{% if openwisp2_radius_unverify_inactive_users %}
-OPENWISP_RADIUS_UNVERIFY_INACTIVE_USERS = {{ openwisp2_radius_unverify_inactive_users }}
+OPENWISP_RADIUS_SMS_TOKEN_MAX_IP_DAILY = {{ immunity22_radius_sms_token_max_ip_daily }}
+{% if immunity22_radius_unverify_inactive_users %}
+OPENWISP_RADIUS_UNVERIFY_INACTIVE_USERS = {{ immunity22_radius_unverify_inactive_users }}
 {% endif %}
-{% if openwisp2_radius_delete_inactive_users %}
-OPENWISP_RADIUS_DELETE_INACTIVE_USERS = {{ openwisp2_radius_delete_inactive_users }}
+{% if immunity22_radius_delete_inactive_users %}
+OPENWISP_RADIUS_DELETE_INACTIVE_USERS = {{ immunity22_radius_delete_inactive_users }}
 {% endif %}
-SENDSMS_BACKEND = '{{ openwisp2_radius_sms_backend }}'
+SENDSMS_BACKEND = '{{ immunity22_radius_sms_backend }}'
 
 # django-sesame configuration for magic sign-in links.
 # Refer https://github.com/aaugustin/django-sesame#django-sesame.
 AUTHENTICATION_BACKENDS += [
     'sesame.backends.ModelBackend',
 ]
-SESAME_MAX_AGE = {{ openwisp2_django_sesame_max_age }}
+SESAME_MAX_AGE = {{ immunity22_django_sesame_max_age }}
 {% endif %}
 
-ROOT_URLCONF = 'openwisp2.urls'
-OPENWISP_USERS_AUTH_API = {{ openwisp2_users_auth_api }}
-{% if openwisp2_users_user_password_expiration %}
-OPENWISP_USERS_USER_PASSWORD_EXPIRATION = {{ openwisp2_users_user_password_expiration }}
+ROOT_URLCONF = 'immunity22.urls'
+OPENWISP_USERS_AUTH_API = {{ immunity22_users_auth_api }}
+{% if immunity22_users_user_password_expiration %}
+OPENWISP_USERS_USER_PASSWORD_EXPIRATION = {{ immunity22_users_user_password_expiration }}
 {% endif %}
-{% if openwisp2_users_staff_user_password_expiration %}
-OPENWISP_USERS_STAFF_USER_PASSWORD_EXPIRATION = {{ openwisp2_users_staff_user_password_expiration }}
+{% if immunity22_users_staff_user_password_expiration %}
+OPENWISP_USERS_STAFF_USER_PASSWORD_EXPIRATION = {{ immunity22_users_staff_user_password_expiration }}
 {% endif %}
 
 
@@ -209,12 +209,12 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('{{ openwisp2_redis_host }}', {{ openwisp2_redis_port }})],
-            'group_expiry': {{ openwisp2_daphne_websocket_timeout }},
+            'hosts': [('{{ immunity22_redis_host }}', {{ immunity22_redis_port }})],
+            'group_expiry': {{ immunity22_daphne_websocket_timeout }},
         },
     },
 }
-ASGI_APPLICATION = 'openwisp2.routing.application'
+ASGI_APPLICATION = 'immunity22.routing.application'
 
 TEMPLATES = [
     {
@@ -243,8 +243,8 @@ TEMPLATES = [
 
 # Run celery in eager mode using in-memory broker while running tests
 if not TESTING:
-    CELERY_TASK_ACKS_LATE = {{ openwisp2_celery_task_acks_late }}
-    CELERY_BROKER_URL = '{{ openwisp2_celery_broker_url }}'
+    CELERY_TASK_ACKS_LATE = {{ immunity22_celery_task_acks_late }}
+    CELERY_BROKER_URL = '{{ immunity22_celery_broker_url }}'
 else:
     CELERY_TASK_ALWAYS_EAGER = True
     CELERY_TASK_EAGER_PROPAGATES = True
@@ -252,30 +252,30 @@ else:
 
 # Workaround for stalled migrate command
 CELERY_BROKER_TRANSPORT_OPTIONS = {
-    'max_retries': {{ openwisp2_celery_broker_max_tries }},
+    'max_retries': {{ immunity22_celery_broker_max_tries }},
 }
 
 CELERY_BEAT_SCHEDULE = {
-{% if openwisp2_users_user_password_expiration or openwisp2_users_staff_user_password_expiration %}
+{% if immunity22_users_user_password_expiration or immunity22_users_staff_user_password_expiration %}
     'password_expiry_email': {
         'task': 'openwisp_users.tasks.password_expiration_email',
         'schedule': crontab(**{ {{ cron_password_expiration_email }} }),
     },
 {% endif %}
-{% if openwisp2_notifications_delete_old_notifications %}
+{% if immunity22_notifications_delete_old_notifications %}
     'delete_old_notifications': {
         'task': 'openwisp_notifications.tasks.delete_old_notifications',
         'schedule': crontab(**{ {{ cron_delete_old_notifications }} }),
-        'args': ({{ openwisp2_notifications_delete_old_notifications }},),
+        'args': ({{ immunity22_notifications_delete_old_notifications }},),
     },
 {% endif %}
-{% if openwisp2_monitoring and openwisp2_monitoring_periodic_tasks %}
+{% if immunity22_monitoring and immunity22_monitoring_periodic_tasks %}
     'run_checks': {
         'task': 'openwisp_monitoring.check.tasks.run_checks',
         'schedule': timedelta(minutes=5),
     },
 {% endif %}
-{% if openwisp2_radius and openwisp2_radius_periodic_tasks %}
+{% if immunity22_radius and immunity22_radius_periodic_tasks %}
     'deactivate_expired_users': {
         'task': 'openwisp_radius.tasks.deactivate_expired_users',
         'schedule': crontab(**{ {{ cron_deactivate_expired_users }} }),
@@ -285,37 +285,37 @@ CELERY_BEAT_SCHEDULE = {
     'delete_old_radiusbatch_users': {
         'task': 'openwisp_radius.tasks.delete_old_radiusbatch_users',
         'schedule': crontab(**{ {{ cron_delete_old_radiusbatch_users }} }),
-        'args': [{{ openwisp2_radius_delete_old_radiusbatch_users }}],
+        'args': [{{ immunity22_radius_delete_old_radiusbatch_users }}],
         'relative': True,
     },
     'cleanup_stale_radacct': {
         'task': 'openwisp_radius.tasks.cleanup_stale_radacct',
         'schedule': crontab(**{ {{ cron_cleanup_stale_radacct }} }),
-        'args': [{{ openwisp2_radius_cleanup_stale_radacct }}],
+        'args': [{{ immunity22_radius_cleanup_stale_radacct }}],
         'relative': True,
     },
     'delete_old_postauth': {
         'task': 'openwisp_radius.tasks.delete_old_postauth',
         'schedule': crontab(**{ {{ cron_delete_old_postauth }} }),
-        'args': [{{ openwisp2_radius_delete_old_postauth }}],
+        'args': [{{ immunity22_radius_delete_old_postauth }}],
         'relative': True,
     },
-    {% if openwisp2_radius_delete_old_radacct %}
+    {% if immunity22_radius_delete_old_radacct %}
         'delete_old_radacct': {
             'task': 'openwisp_radius.tasks.delete_old_radacct',
             'schedule': crontab(**{ {{ cron_delete_old_radacct }} }),
-            'args': [{{ openwisp2_radius_delete_old_radacct }}],
+            'args': [{{ immunity22_radius_delete_old_radacct }}],
             'relative': True,
         },
     {% endif %}
-    {% if openwisp2_radius_unverify_inactive_users %}
+    {% if immunity22_radius_unverify_inactive_users %}
         'unverify_inactive_users': {
             'task': 'openwisp_radius.tasks.unverify_inactive_users',
             'schedule': crontab(**{ {{ cron_unverify_inactive_users }} }),
             'relative': True,
         },
     {% endif %}
-    {% if openwisp2_radius_delete_inactive_users %}
+    {% if immunity22_radius_delete_inactive_users %}
         'delete_inactive_users': {
             'task': 'openwisp_radius.tasks.delete_inactive_users',
             'schedule': crontab(**{ {{ cron_delete_inactive_users }} }),
@@ -323,7 +323,7 @@ CELERY_BEAT_SCHEDULE = {
         },
     {% endif %}
 {% endif %}
-{% if openwisp2_usage_metric_collection is not false and openwisp2_usage_metric_collection_periodic_tasks %}
+{% if immunity22_usage_metric_collection is not false and immunity22_usage_metric_collection_periodic_tasks %}
     'send_usage_metrics': {
         'task': 'openwisp_utils.metric_collection.tasks.send_usage_metrics',
         'schedule': timedelta(days=1),
@@ -331,18 +331,18 @@ CELERY_BEAT_SCHEDULE = {
 {% endif %}
 }
 
-{% if openwisp2_celery_task_routes_defaults %}
+{% if immunity22_celery_task_routes_defaults %}
 CELERY_TASK_ROUTES = {
-{% if openwisp2_celery_network %}
+{% if immunity22_celery_network %}
     # network operations, executed in the "network" queue
     'openwisp_controller.connection.tasks.*': {'queue': 'network'},
 {% endif %}
-{% if openwisp2_monitoring and openwisp2_celery_monitoring %}
+{% if immunity22_monitoring and immunity22_celery_monitoring %}
     # monitoring checks are executed in a dedicated "monitoring" queue
     'openwisp_monitoring.check.tasks.perform_check': {'queue': 'monitoring'},
     'openwisp_monitoring.monitoring.tasks.migrate_timeseries_database': {'queue': 'monitoring'},
 {% endif %}
-{% if openwisp2_firmware_upgrader and openwisp2_celery_firmware_upgrader %}
+{% if immunity22_firmware_upgrader and immunity22_celery_firmware_upgrader %}
     # firmware upgrade operations, executed in the "firmware_upgrader" queue
     'openwisp_firmware_upgrader.tasks.upgrade_firmware': {'queue': 'firmware_upgrader'},
     'openwisp_firmware_upgrader.tasks.batch_upgrade_operation': {'queue': 'firmware_upgrader'},
@@ -356,7 +356,7 @@ CELERY_TASK_ROUTES = {
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': '{{ openwisp2_redis_cache_url }}',
+        'LOCATION': '{{ immunity22_redis_cache_url }}',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
@@ -370,35 +370,35 @@ CSRF_COOKIE_SECURE = True
 
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
-WSGI_APPLICATION = 'openwisp2.wsgi.application'
+WSGI_APPLICATION = 'immunity22.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': '{{ openwisp2_database.engine }}',
-        'NAME': '{{ openwisp2_database.name }}',
-{% if openwisp2_database.user is defined and openwisp2_database.user%}
-        'USER': '{{ openwisp2_database.user }}',
+        'ENGINE': '{{ immunity22_database.engine }}',
+        'NAME': '{{ immunity22_database.name }}',
+{% if immunity22_database.user is defined and immunity22_database.user%}
+        'USER': '{{ immunity22_database.user }}',
 {% endif %}
-{% if openwisp2_database.password is defined and openwisp2_database.password %}
-        'PASSWORD': '{{ openwisp2_database.password }}',
+{% if immunity22_database.password is defined and immunity22_database.password %}
+        'PASSWORD': '{{ immunity22_database.password }}',
 {% endif %}
-{% if openwisp2_database.host is defined and openwisp2_database.host %}
-        'HOST': '{{ openwisp2_database.host }}',
+{% if immunity22_database.host is defined and immunity22_database.host %}
+        'HOST': '{{ immunity22_database.host }}',
 {% endif %}
-{% if openwisp2_database.port is defined and openwisp2_database.port %}
-        'PORT': '{{ openwisp2_database.port }}',
+{% if immunity22_database.port is defined and immunity22_database.port %}
+        'PORT': '{{ immunity22_database.port }}',
 {% endif %}
-{% if openwisp2_database.options is defined and openwisp2_database.options %}
-        'OPTIONS': {{ openwisp2_database.options|to_nice_json }}
+{% if immunity22_database.options is defined and immunity22_database.options %}
+        'OPTIONS': {{ immunity22_database.options|to_nice_json }}
 {% endif %}
     }
 }
 
-{% if openwisp2_spatialite_path %}
-SPATIALITE_LIBRARY_PATH = '{{ openwisp2_spatialite_path }}'
+{% if immunity22_spatialite_path %}
+SPATIALITE_LIBRARY_PATH = '{{ immunity22_spatialite_path }}'
 {% endif %}
 
 # Password validation
@@ -415,9 +415,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = '{{ openwisp2_language_code }}'
-TIME_ZONE = '{{ openwisp2_time_zone }}'
-{% if openwisp2_internationalization %}
+LANGUAGE_CODE = '{{ immunity22_language_code }}'
+TIME_ZONE = '{{ immunity22_time_zone }}'
+{% if immunity22_internationalization %}
 USE_I18N = True
 USE_L10N = True
 {% endif %}
@@ -432,16 +432,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-{% if openwisp2_context %}
-NETJSONCONFIG_CONTEXT = {{ openwisp2_context|to_nice_json }}
+{% if immunity22_context %}
+NETJSONCONFIG_CONTEXT = {{ immunity22_context|to_nice_json }}
 {% endif %}
 
 # django x509 settings
-DJANGO_X509_DEFAULT_CERT_VALIDITY = {{ openwisp2_default_cert_validity }}
-DJANGO_X509_DEFAULT_CA_VALIDITY = {{ openwisp2_default_ca_validity }}
+DJANGO_X509_DEFAULT_CERT_VALIDITY = {{ immunity22_default_cert_validity }}
+DJANGO_X509_DEFAULT_CA_VALIDITY = {{ immunity22_default_ca_validity }}
 
-{% if openwisp2_leaflet_config %}
-LEAFLET_CONFIG = {{ openwisp2_leaflet_config|to_nice_json }}
+{% if immunity22_leaflet_config %}
+LEAFLET_CONFIG = {{ immunity22_leaflet_config|to_nice_json }}
 {% else %}
 LEAFLET_CONFIG = {}
 {% endif %}
@@ -449,9 +449,9 @@ LEAFLET_CONFIG = {}
 LEAFLET_CONFIG['RESET_VIEW'] = False
 
 # Set default email
-DEFAULT_FROM_EMAIL = '{{ openwisp2_default_from_email }}'
-EMAIL_BACKEND = '{{ openwisp2_email_backend }}'
-EMAIL_TIMEOUT = {{ openwisp2_email_timeout }}
+DEFAULT_FROM_EMAIL = '{{ immunity22_default_from_email }}'
+EMAIL_BACKEND = '{{ immunity22_email_backend }}'
+EMAIL_TIMEOUT = {{ immunity22_email_timeout }}
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 LOGGING = {
@@ -488,7 +488,7 @@ LOGGING = {
         'main_log': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': os.path.join(BASE_DIR, 'log/openwisp2.log'),
+            'filename': os.path.join(BASE_DIR, 'log/immunity22.log'),
             'maxBytes': 15728640,
             'backupCount': 3,
             'formatter': 'verbose'
@@ -497,7 +497,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.NullHandler',
         },
-{% if openwisp2_sentry.get('dsn') %}
+{% if immunity22_sentry.get('dsn') %}
         'sentry': {
             'level': 'ERROR',
             'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
@@ -511,7 +511,7 @@ LOGGING = {
             'main_log',
             'console',
             'mail_admins',
-{% if openwisp2_sentry.get('dsn') %}
+{% if immunity22_sentry.get('dsn') %}
             'sentry'
 {% endif %}
         ]
@@ -532,41 +532,41 @@ STATICFILES_STORAGE = 'openwisp_utils.storage.CompressStaticFilesStorage'
 BROTLI_STATIC_COMPRESSION = False
 GZIP_STATIC_COMPRESSION = False
 
-{% if openwisp2_sentry.get('dsn') %}
-RAVEN_CONFIG = {{ openwisp2_sentry|to_nice_json }}
+{% if immunity22_sentry.get('dsn') %}
+RAVEN_CONFIG = {{ immunity22_sentry|to_nice_json }}
 {% endif %}
 
-{% if openwisp2_monitoring %}
+{% if immunity22_monitoring %}
 TIMESERIES_DATABASE = {
-    'BACKEND': '{{ openwisp2_timeseries_database.backend }}',
-    'USER': '{{ openwisp2_timeseries_database.user }}',
-    'PASSWORD': '{{ openwisp2_timeseries_database.password }}',
-    'NAME': '{{ openwisp2_timeseries_database.name }}',
-    'HOST': '{{ openwisp2_timeseries_database.host }}',
-    'PORT': '{{ openwisp2_timeseries_database.port }}',
+    'BACKEND': '{{ immunity22_timeseries_database.backend }}',
+    'USER': '{{ immunity22_timeseries_database.user }}',
+    'PASSWORD': '{{ immunity22_timeseries_database.password }}',
+    'NAME': '{{ immunity22_timeseries_database.name }}',
+    'HOST': '{{ immunity22_timeseries_database.host }}',
+    'PORT': '{{ immunity22_timeseries_database.port }}',
 }
-OPENWISP_MONITORING_DEFAULT_RETENTION_POLICY = '{{ openwisp2_monitoring_default_retention_policy }}'
+OPENWISP_MONITORING_DEFAULT_RETENTION_POLICY = '{{ immunity22_monitoring_default_retention_policy }}'
 {% endif %}
 
-{% for setting, value in openwisp2_extra_django_settings.items() %}
+{% for setting, value in immunity22_extra_django_settings.items() %}
 {{ setting }} = {% if value is string %}'{{ value }}'{% else %}{{ value }}{% endif %}
 
 {% endfor %}
 
-{% for instruction in openwisp2_extra_django_settings_instructions %}
+{% for instruction in immunity22_extra_django_settings_instructions %}
 {{ instruction }}
 
 {% endfor %}
 
-{% if openwisp2_django_cors.enabled %}
+{% if immunity22_django_cors.enabled %}
 # CORS configuration
 INSTALLED_APPS.append('corsheaders')
 MIDDLEWARE.insert(MIDDLEWARE.index('django.middleware.common.CommonMiddleware'), 'corsheaders.middleware.CorsMiddleware')
-{% if openwisp2_django_cors.get('replace_https_referer', False) %}
+{% if immunity22_django_cors.get('replace_https_referer', False) %}
 MIDDLEWARE.insert(MIDDLEWARE.index('django.middleware.csrf.CsrfViewMiddleware') + 1, 'corsheaders.middleware.CorsPostCsrfMiddleware')
-CORS_REPLACE_HTTPS_REFERER = {{ openwisp2_django_cors.get('replace_https_referer', False) }}
+CORS_REPLACE_HTTPS_REFERER = {{ immunity22_django_cors.get('replace_https_referer', False) }}
 {% endif %}
-CORS_ALLOWED_ORIGINS = {{ openwisp2_django_cors.get('allowed_origins_list', []) }}
+CORS_ALLOWED_ORIGINS = {{ immunity22_django_cors.get('allowed_origins_list', []) }}
 {% endif %}
 
 TEST_RUNNER = 'openwisp_utils.metric_collection.tests.runner.MockRequestPostRunner'

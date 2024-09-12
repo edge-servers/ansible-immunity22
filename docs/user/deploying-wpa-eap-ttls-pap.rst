@@ -20,13 +20,13 @@ FreeRADIUS, and configures it for WPA Enterprise (EAP-TTLS-PAP):
 
 .. code-block:: yaml
 
-    - hosts: openwisp2
+    - hosts: immunity22
       become: "{{ become | default('yes') }}"
       roles:
-        - openwisp.openwisp2
+        - openwisp.immunity22
       vars:
-        openwisp2_radius: true
-        openwisp2_freeradius_install: true
+        immunity22_radius: true
+        immunity22_freeradius_install: true
         # Define a list of dictionaries detailing each organization's
         # name, UUID, RADIUS token, and ports for authentication,
         # accounting, and the inner tunnel. These details will be used
@@ -111,11 +111,11 @@ The following example playbook achieves the following goals:
 
 .. code-block:: yaml
 
-    - hosts: openwisp2
+    - hosts: immunity22
       become: "{{ become | default('yes') }}"
       roles:
         - geerlingguy.certbot
-        - openwisp.openwisp2
+        - openwisp.immunity22
       vars:
         # certbot configuration
         certbot_auto_renew_minute: "20"
@@ -132,11 +132,11 @@ The following example playbook achieves the following goals:
             domains:
               - "freeradius.yourdomain.com"
         # Configuration to use Let's Encrypt certificate for OpenWISP server (Nnginx)
-        openwisp2_ssl_cert: "/etc/letsencrypt/live/{{ inventory_hostname }}/fullchain.pem"
-        openwisp2_ssl_key: "/etc/letsencrypt/live/{{ inventory_hostname }}/privkey.pem"
+        immunity22_ssl_cert: "/etc/letsencrypt/live/{{ inventory_hostname }}/fullchain.pem"
+        immunity22_ssl_key: "/etc/letsencrypt/live/{{ inventory_hostname }}/privkey.pem"
         # Configuration for openwisp-radius
-        openwisp2_radius: true
-        openwisp2_freeradius_install: true
+        immunity22_radius: true
+        immunity22_freeradius_install: true
         freeradius_eap_orgs:
           - name: demo
             uuid: 00000000-0000-0000-0000-000000000001

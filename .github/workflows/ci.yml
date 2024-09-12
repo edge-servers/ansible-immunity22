@@ -55,14 +55,14 @@ jobs:
       - name: Tests
         run: |
           mkdir -p ~/.ansible/roles
-          ln -s $GITHUB_WORKSPACE ~/.ansible/roles/openwisp.openwisp2
+          ln -s $GITHUB_WORKSPACE ~/.ansible/roles/openwisp.immunity22
           molecule test
         env:
-          ROLE_NAME: openwisp2
+          ROLE_NAME: immunity22
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           MOLECULE_DISTRO: ${{ matrix.distro }}
-          ANSIBLE_ROLES_PATH: /home/runner/.cache/molecule/ansible-openwisp2/default/roles:/home/runner/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
+          ANSIBLE_ROLES_PATH: /home/runner/.cache/molecule/ansible-immunity22/default/roles:/home/runner/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles
 
   import:
     name: Update imports on Ansible Galaxy
@@ -78,4 +78,4 @@ jobs:
 
       - name: Update imports on Ansible Galaxy
         run: |
-          ansible-galaxy role import --api-key ${{ secrets.GALAXY_API_KEY }} openwisp ansible-openwisp2
+          ansible-galaxy role import --api-key ${{ secrets.GALAXY_API_KEY }} openwisp ansible-immunity22

@@ -10,11 +10,11 @@ the following:
 
 .. code-block:: text
 
-    [openwisp2]
-    openwisp2.yourdomain.com
+    [immunity22]
+    immunity22.yourdomain.com
 
-You must be able to add a DNS record for ``openwisp2.yourdomain.com``, you
-cannot use an ip address in place of ``openwisp2.yourdomain.com``.
+You must be able to add a DNS record for ``immunity22.yourdomain.com``, you
+cannot use an ip address in place of ``immunity22.yourdomain.com``.
 
 Once your domain is set up and the DNS record is propagated, proceed by
 installing the ansible role `geerlingguy.certbot
@@ -29,15 +29,15 @@ the following example:
 
 .. code-block:: yaml
 
-    - hosts: openwisp2
+    - hosts: immunity22
       become: "{{ become | default('yes') }}"
       roles:
         - geerlingguy.certbot
-        - openwisp.openwisp2
+        - openwisp.immunity22
       vars:
         # SSL certificates
-        openwisp2_ssl_cert: "/etc/letsencrypt/live/{{ inventory_hostname }}/fullchain.pem"
-        openwisp2_ssl_key: "/etc/letsencrypt/live/{{ inventory_hostname }}/privkey.pem"
+        immunity22_ssl_cert: "/etc/letsencrypt/live/{{ inventory_hostname }}/fullchain.pem"
+        immunity22_ssl_key: "/etc/letsencrypt/live/{{ inventory_hostname }}/privkey.pem"
 
         # certbot configuration
         certbot_auto_renew_minute: "20"

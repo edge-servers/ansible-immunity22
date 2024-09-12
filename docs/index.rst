@@ -3,8 +3,8 @@ Ansible OpenWISP
 
 .. seealso::
 
-    **Source code**: `github.com/openwisp/ansible-openwisp2
-    <https://github.com/openwisp/ansible-openwisp2>`_.
+    **Source code**: `github.com/openwisp/ansible-immunity22
+    <https://github.com/openwisp/ansible-immunity22>`_.
 
 This ansible role allows deploying the OpenWISP Server Application.
 

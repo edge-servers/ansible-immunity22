@@ -1,38 +1,38 @@
 ---
 
 - import_tasks: consent.yml
-  tags: [openwisp2, usage_collection]
+  tags: [immunity22, usage_collection]
 
 - import_tasks: apt.yml
-  tags: [openwisp2, apt]
+  tags: [immunity22, apt]
 
 - import_tasks: ssh.yml
-  tags: [openwisp2, ssh]
+  tags: [immunity22, ssh]
 
 - name: Import system tasks
   import_tasks: system.yml
-  tags: [openwisp2, system]
+  tags: [immunity22, system]
 
 - import_tasks: pip.yml
-  tags: [openwisp2, pip]
+  tags: [immunity22, pip]
 
 # comprises django_secret_key.yml
 - import_tasks: django.yml
-  tags: [openwisp2, django]
+  tags: [immunity22, django]
 
 - import_tasks: freeradius.yml
-  when: openwisp2_radius and openwisp2_freeradius_install
-  tags: [openwisp2, freeradius]
+  when: immunity22_radius and immunity22_freeradius_install
+  tags: [immunity22, freeradius]
 
 - import_tasks: supervisor.yml
-  tags: [openwisp2, supervisor]
+  tags: [immunity22, supervisor]
 
 - import_tasks: nginx.yml
-  when: openwisp2_nginx_install
-  tags: [openwisp2, nginx]
+  when: immunity22_nginx_install
+  tags: [immunity22, nginx]
 
 - import_tasks: cron.yml
-  tags: [openwisp2, cron]
+  tags: [immunity22, cron]
 
 - import_tasks: complete.yml
-  tags: [openwisp2]
+  tags: [immunity22]

@@ -1,7 +1,7 @@
-# ansible-openwisp2
+# ansible-immunity22
 
-[![Build Status](https://github.com/openwisp/ansible-openwisp2/workflows/Ansible%20OpenWISP2%20CI%20Build/badge.svg?branch=master)](https://github.com/openwisp/ansible-openwisp2/actions?query=workflow%3A%22Ansible+OpenWISP2+CI+Build%22)
-[![Galaxy](http://img.shields.io/badge/galaxy-openwisp.openwisp2-blue.svg?style=flat-square)](https://galaxy.ansible.com/ui/standalone/roles/openwisp/openwisp2/)
+[![Build Status](https://github.com/openwisp/ansible-immunity22/workflows/Ansible%20OpenWISP2%20CI%20Build/badge.svg?branch=master)](https://github.com/openwisp/ansible-immunity22/actions?query=workflow%3A%22Ansible+OpenWISP2+CI+Build%22)
+[![Galaxy](http://img.shields.io/badge/galaxy-openwisp.immunity22-blue.svg?style=flat-square)](https://galaxy.ansible.com/ui/standalone/roles/openwisp/immunity22/)
 [![Chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/openwisp/general)
 
 Ansible role that installs the OpenWISP Server Application.

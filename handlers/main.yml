@@ -16,10 +16,10 @@
     - Migrate timeseries database
 
 - name: Reload uwsgi
-  command: "{{ virtualenv_path }}/bin/uwsgi --reload {{ openwisp2_path }}/uwsgi.pid"
+  command: "{{ virtualenv_path }}/bin/uwsgi --reload {{ immunity22_path }}/uwsgi.pid"
   # Skips reloading uwsgi if it's supervisor configuration has changed.
   # Otherwise, the process will be restarted twice.
-  when: not (supervisord_update_all is defined and "openwisp2:" in supervisord_update_all.stdout)
+  when: not (supervisord_update_all is defined and "immunity22:" in supervisord_update_all.stdout)
 
 # Daphne does not support graceful reloading.
 # Read https://github.com/django/daphne/issues/177
@@ -34,14 +34,14 @@
   # Skips restarting service if it's supervisor configuration has changed.
   # Otherwise, the process will be restarted twice.
   when: "item.when and not (supervisord_update_all is defined and item.name ~ ':' in supervisord_update_all.stdout)"
-  loop: "{{ openwisp2_default_supervisor_restart + openwisp2_extra_supervisor_restart }}"
+  loop: "{{ immunity22_default_supervisor_restart + immunity22_extra_supervisor_restart }}"
   loop_control:
     loop_var: item
 
 # Clean up the schedule file because it may become corrupted after updates
 - name: Remove celerybeat schedule
   file:
-    path: "{{ openwisp2_path }}/celerybeat-schedule.db"
+    path: "{{ immunity22_path }}/celerybeat-schedule.db"
     state: absent
 
 # NOTE: Related to https://github.com/openwisp/openwisp-monitoring/pull/368
@@ -50,19 +50,19 @@
   become: true
   become_user: "{{ www_user }}"
   django_manage:
-    app_path: "{{ openwisp2_path }}"
+    app_path: "{{ immunity22_path }}"
     command: migrate_timeseries
     virtualenv: "{{ virtualenv_path }}"
-  when: openwisp2_monitoring
+  when: immunity22_monitoring
 
 - name: Restart nginx
   service:
     name: nginx
     state: restarted
-  when: openwisp2_nginx_install
+  when: immunity22_nginx_install
 
 - name: Start redis
-  when: openwisp2_redis_install
+  when: immunity22_redis_install
   service:
     name: redis
     state: started
